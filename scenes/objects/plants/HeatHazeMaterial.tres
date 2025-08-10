@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bfefx2fps4a8d"]
+
+[ext_resource type="Shader" uid="uid://0vyx1qq4mihg" path="res://scenes/objects/plants/pulsating_heat.gdshader" id="1_plucf"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_plucf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8pm62"]
+noise = SubResource("FastNoiseLite_plucf")
+
+[resource]
+shader = ExtResource("1_plucf")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_8pm62")
+shader_parameter/strength = 0.009
+shader_parameter/pulse_speed = 2.038
+shader_parameter/turbulence_speed = 0.5
+shader_parameter/tint_color = Color(1, 0.172549, 0.129412, 0.356863)
