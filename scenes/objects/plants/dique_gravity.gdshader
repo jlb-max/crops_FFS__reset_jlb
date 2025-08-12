@@ -1,42 +1,45 @@
-// rippling_gravity.gdshader (inspiré de ShaderToy)
+// true_gravity_from_heat.gdshader
 shader_type canvas_item;
 render_mode blend_mix;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
-// --- TES CONTRÔLES ---
-// La force/hauteur des vagues (sera liée à Gravity Influence)
-uniform float strength : hint_range(0.0, 0.05, 0.001) = 0.005; 
-// Le nombre d'anneaux dans l'onde (sera lié à un paramètre visuel)
-uniform float frequency : hint_range(1.0, 50.0, 1.0) = 20.0;
-// La vitesse de propagation des ondes (sera lié à un paramètre visuel)
-uniform float speed : hint_range(0.0, 10.0, 0.1) = 3.0;
+// On garde les mêmes uniforms que heatHaze pour une comparaison directe
+uniform float strength : hint_range(0.0, 0.05) = 0.015;
+uniform float speed : hint_range(0.0, 5.0) = 0.5;
+// On ajoute une densité pour les vagues
+uniform float wave_density : hint_range(1.0, 50.0) = 20.0;
+
 
 void fragment() {
-	// -- Notre base de coordonnées stable --
 	vec2 uv_local = UV * 2.0 - 1.0;
 	float dist_rel = length(uv_local);
 
 	if (dist_rel > 1.0) {
 		discard;
 	}
-	// Notre atténuation sur les bords pour la fusion
-	float falloff = pow(1.0 - dist_rel, 2.0); 
 
-	// -- La "formule magique" de ton shader d'exemple --
-	// On crée l'ondulation concentrique avec un cosinus.
-	float ripple = cos(dist_rel * frequency - TIME * speed) * strength;
+	// On utilise le même falloff linéaire que heatHaze
+	float falloff = 1.0 - dist_rel;
+
+	// --- LA SEULE MODIFICATION EST ICI ---
+	// Au lieu de lire dans une texture de bruit...
 	
-	// On crée un vecteur de distorsion qui pousse/tire les pixels depuis le centre.
-	vec2 distortion_vector = normalize(uv_local) * ripple * falloff;
-	
-	// On applique la distorsion finale à l'écran.
-	vec2 distorted_uv = SCREEN_UV - distortion_vector;
-	
-	// --- NOTRE SYSTÈME DE RENDU FINAL ---
-	vec4 final_color = texture(SCREEN_TEXTURE, distorted_uv);
-	
-	// On applique la transparence pour une fusion parfaite.
+	// On génère deux ondes sinus différentes, comme si c'était nos deux "bruits".
+	float wave1 = sin(dist_rel * wave_density + TIME * speed);
+	float wave2 = cos(dist_rel * wave_density * 0.6 - TIME * speed * 1.5);
+
+	// On utilise ces deux ondes pour créer un vecteur de déformation bidirectionnel,
+	// exactement comme heatHaze le fait avec noise1 et noise2.
+	vec2 offset;
+	offset.x = wave1;
+	offset.y = wave2;
+	// --- Fin de la modification ---
+
+	// Le reste du code est IDENTIQUE à votre shader heatHaze qui fonctionne.
+	vec2 screen_uv_distorted = SCREEN_UV - offset * strength * falloff;
+
+	vec4 final_color = texture(SCREEN_TEXTURE, screen_uv_distorted);
 	final_color.a *= falloff;
 	
 	COLOR = final_color;

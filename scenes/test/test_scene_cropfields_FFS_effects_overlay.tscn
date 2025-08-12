@@ -119,35 +119,35 @@ objects_container = NodePath("../GameTileMap/Grass")
 position = Vector2(219, 206)
 
 [node name="GroundLoot" parent="." instance=ExtResource("20_my5tm")]
-position = Vector2(443, 206)
+position = Vector2(8, 136)
 item_data = ExtResource("21_7vgax")
 
 [node name="GroundLoot2" parent="." instance=ExtResource("20_my5tm")]
-position = Vector2(474, 206)
+position = Vector2(39, 136)
 item_data = ExtResource("22_6g3a1")
 
 [node name="GroundLoot3" parent="." instance=ExtResource("20_my5tm")]
-position = Vector2(506, 206)
+position = Vector2(71, 136)
 item_data = ExtResource("23_mosaf")
 
 [node name="GroundLoot4" parent="." instance=ExtResource("20_my5tm")]
-position = Vector2(536, 206)
+position = Vector2(101, 136)
 item_data = ExtResource("24_5em4b")
 
 [node name="GroundLoot5" parent="." instance=ExtResource("20_my5tm")]
-position = Vector2(565, 206)
+position = Vector2(130, 136)
 item_data = ExtResource("25_mgrtx")
 
 [node name="GroundLoot6" parent="." instance=ExtResource("20_my5tm")]
-position = Vector2(565, 228)
+position = Vector2(130, 158)
 item_data = ExtResource("26_0l4ab")
 
 [node name="GroundLoot18" parent="." instance=ExtResource("20_my5tm")]
-position = Vector2(565, 251)
+position = Vector2(130, 181)
 item_data = ExtResource("26_0l4ab")
 
 [node name="GroundLoot7" parent="." instance=ExtResource("20_my5tm")]
-position = Vector2(542, 228)
+position = Vector2(107, 158)
 item_data = ExtResource("27_daeo3")
 
 [node name="GroundLoot8" parent="." instance=ExtResource("20_my5tm")]
@@ -187,5 +187,5 @@ position = Vector2(198, 324)
 item_data = ExtResource("29_tnxl6")
 
 [node name="GroundLoot10" parent="." instance=ExtResource("20_my5tm")]
-position = Vector2(514, 230)
+position = Vector2(79, 160)
 item_data = ExtResource("31_pmv7h")

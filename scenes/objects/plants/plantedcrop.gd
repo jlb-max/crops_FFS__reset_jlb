@@ -18,7 +18,6 @@ var is_dead: bool = false # Pour savoir si la plante est morte
 @onready var hurt_component       : HurtComponent      = $HurtComponent
 @onready var collectable_component: CollectableComponent = $CollectableComponent
 @onready var light_emitter        : PointLight2D       = $LightEmitter
-@onready var gravity_fx : BackBufferCopy = $GravityFX
 @onready var gravity_warp : ColorRect = $GravityWarp
 @onready var aura_component: AuraComponent = $AuraComponent
 
@@ -97,20 +96,14 @@ func _ready() -> void:
     gravity_warp.visible = false
     if plant_data.gravity_effect and plant_data.gravity_effect.has_gravity_effect:
         gravity_warp.visible = true
-        
+    
         var effect_data = plant_data.gravity_effect
         var mat = gravity_warp.material as ShaderMaterial
-        
-        
+
         gravity_warp.size = Vector2(effect_data.gravity_radius * 2, effect_data.gravity_radius * 2)
         gravity_warp.position = Vector2(-effect_data.gravity_radius, -effect_data.gravity_radius)
         
-        
-        mat.set_shader_parameter("strength", effect_data.gravity_influence / 200.0) 
-        
-    
-        mat.set_shader_parameter("frequency", effect_data.wave_wavelength) 
-        mat.set_shader_parameter("speed", effect_data.wave_speed)       
+        mat.set_shader_parameter("strength", effect_data.gravity_influence * 0.02)
     
     # Effet de Chaleur
     aura_component.visible = false
@@ -195,39 +188,22 @@ func _burst_water_sphere() -> void:
     )
 
 
-
-
-func _update_gravity_rect() -> void:     # ← NEW
-    var vp_size : Vector2 = get_viewport().size
-    gravity_fx.custom_minimum_size = vp_size     # donne une taille
-    gravity_fx.position = -vp_size * 0.5         # centre sur la plante
-
-func _update_shader_params() -> void:
-    # On lit les valeurs depuis la sous-ressource
-    var radius_uv := plant_data.gravity_effect.gravity_radius / float(get_viewport().size.x)
-    gravity_fx.material.set_shader_parameter("radius_uv", radius_uv)
-    gravity_fx.material.set_shader_parameter("strength",
-        plant_data.gravity_effect.gravity_influence)
-
-func _update_hole_center_uv() -> void:   # ← NEW
-    var cam : Camera2D = get_viewport().get_camera_2d()
-    if cam == null: return
-    var screen_pos : Vector2 = cam.get_screen_transform() * self.global_position
-    var uv : Vector2 = screen_pos / Vector2(get_viewport().size)
-    gravity_fx.material.set_shader_parameter("hole_center_uv", uv)
-
 # --------------------------------------------------------------------
 # 1. Animation pulsante de la gravité (shader overlay)
 # --------------------------------------------------------------------
 func _start_pulse() -> void:
     # On lit la valeur depuis la sous-ressource
-    var base := plant_data.gravity_effect.gravity_influence
-    
+    var base := plant_data.gravity_effect.gravity_influence * 8.0 # On reprend le même calcul que dans _ready
+
     var tw = create_tween().set_loops()
+    
+    # On anime "amplitude", pas "strength"
     tw.tween_property(gravity_warp.material,
-        "shader_parameter/strength", base * 1.5, 2.0).from(base * 0.5)
+        "shader_parameter/amplitude", base * 1.5, 2.0).from(base * 0.5)
+        
+    # On anime "amplitude", pas "strength"
     tw.tween_property(gravity_warp.material,
-        "shader_parameter/strength", base * 0.5, 2.0)
+        "shader_parameter/amplitude", base * 0.5, 2.0)
 
 # --------------------------------------------------------------------
 # 2. Halo lumineux « shimmer »
@@ -281,9 +257,7 @@ func on_hurt(item_used : ItemData) -> void:
 # 5. Récolte
 # --------------------------------------------------------------------
 func on_crop_harvesting() -> void:
-    # On vérifie si le nœud existe avant de l'utiliser
-    if gravity_fx:
-        gravity_fx.visible = false
+
     
     var anim := "stage_" + str(growth_cycle_component.total_stages)
     if animated_sprite.sprite_frames.has_animation(anim):
@@ -299,8 +273,7 @@ func _notification(what: int) -> void:
         
     if what == NOTIFICATION_PREDELETE:
         # On ajoute la même vérification ici
-        if gravity_fx:
-            gravity_fx.visible = false
+ 
         
 
         # On recalcule nos coordonnées de case avant de nous désenregistrer
