@@ -83,10 +83,12 @@ func open_biofuel_menu(machine_component: ProcessingMachineComponent):
 	if biofuel_menu:
 		biofuel_menu.open_menu(machine_component)
 
-func register_heater_fuel_menu(menu_node): # <--- 2. AJOUTER CETTE FONCTION
+# Enregistre le menu de combustible du chauffage.
+func register_heater_fuel_menu(menu_node):
 	heater_fuel_menu = menu_node
 
-func open_heater_menu(machine_node: Node): # <--- 3. AJOUTER CETTE FONCTION
+# Ouvre le menu de combustible du chauffage pour le nœud de machine donné.
+func open_heater_menu(machine_node: Node):
 	if heater_fuel_menu:
 		heater_fuel_menu.open_menu(machine_node)
 
