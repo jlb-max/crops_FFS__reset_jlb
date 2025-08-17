@@ -107,6 +107,30 @@ func get_local_effects(pos: Vector2) -> Dictionary:
 		gravity = gravity
 	}
 
+# Renvoie un DPS de brûlure au point 'pos' en sommant les sources de chaleur
+# qui disposent d'un HeatEffectData avec burn_power > 0.
+# 'exclude_owner' permet d'éviter que la source se brûle elle-même (ex: la plante porteuse).
+func get_burn_dps_at(pos: Vector2, exclude_owner: Node2D = null) -> float:
+	var burn := 0.0
+	for s in _sources:
+		if not s.is_inside_tree():
+			continue
+		# Ignore la source elle-même si demandée
+		if exclude_owner and (s == exclude_owner or s.get_parent() == exclude_owner):
+			continue
+		# On ne traite que les auras qui ont un HeatEffectData avec burn_power
+		if "heat_data" in s and s.heat_data and s.heat_data.burn_power > 0.0:
+			if s.effect_radius <= 0.0: 
+				continue
+			var d := pos.distance_to(s.global_position)
+			if d > s.effect_radius:
+				continue
+			var f : float = 1.0 - pow(d / s.effect_radius, 2.0) # même falloff que le reste
+			burn += max(0.0, s.heat_data.burn_power * f)
+	return burn
+
+
+
 func get_sources_snapshot() -> Array[EffectSource2D]:
 	# filtre basique: dans l'arbre uniquement
 	return _sources.filter(func(s): return s.is_inside_tree()).duplicate()

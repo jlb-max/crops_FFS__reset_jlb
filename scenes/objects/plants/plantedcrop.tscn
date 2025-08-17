@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://p7n5n5kk4vjo"]
+[gd_scene load_steps=31 format=3 uid="uid://p7n5n5kk4vjo"]
 
 [ext_resource type="Script" uid="uid://mwgrq6ij5y2x" path="res://scenes/objects/plants/plantedcrop.gd" id="1_urelw"]
 [ext_resource type="PackedScene" uid="uid://8tpm441eojb2" path="res://scenes/objects/plants/growth_cycle_component.tscn" id="2_p35mx"]
@@ -11,6 +11,7 @@
 [ext_resource type="Shader" uid="uid://iyiyk38h8sl4" path="res://scenes/objects/plants/gravity_ripple.gdshader" id="9_uyutu"]
 [ext_resource type="Script" uid="uid://dtd4rxgnd770l" path="res://scenes/objects/plants/aura_component.gd" id="11_l0xxe"]
 [ext_resource type="Material" uid="uid://bfefx2fps4a8d" path="res://scenes/objects/plants/HeatHazeMaterial.tres" id="12_25r6l"]
+[ext_resource type="Texture2D" uid="uid://brrgvqhvbnrhg" path="res://assets/game/objects/new planet/fire_2/1_0.png" id="14_dk0qd"]
 [ext_resource type="Shader" uid="uid://b8uv8bus7bama" path="res://scenes/objects/plants/WaterSphereShader.gdshader" id="14_qqpvx"]
 [ext_resource type="PackedScene" uid="uid://cnj3v48jns0ku" path="res://scenes/ui/HealthBar.tscn" id="14_y26r2"]
 
@@ -93,6 +94,9 @@ collision_friction = 0.0
 collision_bounce = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uyutu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2g8s"]
+atlas = ExtResource("14_dk0qd")
 
 [node name="Plantedcrop" type="Node2D" groups=["crops"]]
 script = ExtResource("1_urelw")
@@ -180,8 +184,24 @@ offset_bottom = -23.0
 
 [node name="StatusIconContainer" type="HBoxContainer" parent="HealthBar"]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 18.0
+offset_bottom = 13.0
 
-[node name="TextureRect" type="TextureRect" parent="HealthBar/StatusIconContainer"]
+[node name="BurnIcon" type="TextureRect" parent="HealthBar/StatusIconContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_t2g8s")
+expand_mode = 1
+
+[node name="BuffIcon" type="TextureRect" parent="HealthBar/StatusIconContainer"]
+visible = false
+layout_mode = 2
+
+[node name="DebuffIcon" type="TextureRect" parent="HealthBar/StatusIconContainer"]
+visible = false
+layout_mode = 2
+
+[node name="WetIcon" type="TextureRect" parent="HealthBar/StatusIconContainer"]
+visible = false
 layout_mode = 2

@@ -23,11 +23,19 @@ var is_dead: bool = false # Pour savoir si la plante est morte
 
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var status_icons_container: HBoxContainer = $StatusIconsContainer
+@onready var icon_burn: TextureRect = $HealthBar/StatusIconContainer/BurnIcon
+@onready var icon_buff: TextureRect = $HealthBar/StatusIconContainer/BuffIcon
+@onready var icon_debuff: TextureRect = $HealthBar/StatusIconContainer/DebuffIcon
+@onready var icon_wet: TextureRect = $HealthBar/StatusIconContainer/WetIcon
+
+
 
 @onready var heat_warp: ColorRect = $HeatWarp
 @onready var flame_particles: GPUParticles2D = $FlameParticles
 @onready var water_sphere: ColorRect = $WaterSphere
 @onready var water_burst_particles: GPUParticles2D = $WaterSphere/WaterBurstParticles
+
+
 
 
 func _ready() -> void:
@@ -315,6 +323,22 @@ func _process(delta: float) -> void:
     var gravity_impact = eff.gravity * gravity_sensitivity
     total_stress_damage += max(0, -gravity_impact)
     total_growth_bonus += max(0, gravity_impact)
+    
+    
+    # --- Brûlure directe indépendante des sensibilités ---
+    var burn_dps := EnvironmentManager.get_burn_dps_at(global_position, self)
+    if burn_dps > 0.0:
+       health -= burn_dps * delta
+       if flame_particles:
+          flame_particles.emitting = true
+    else:
+       if flame_particles:
+          flame_particles.emitting = false
+        
+    _update_status_icons(burn_dps, total_stress_damage, total_growth_bonus)
+
+    
+
 
     # 3. Appliquer le stress et le bonus
     if total_stress_damage > 0:
@@ -350,6 +374,41 @@ func die() -> void:
         health_bar.visible = false
     if status_icons_container:
         status_icons_container.visible = false
+
+func _is_tile_currently_wet() -> bool:
+    if wetness_overlay == null:
+        return false
+    var tile := wetness_overlay.local_to_map(wetness_overlay.to_local(global_position))
+    return SoilManager.is_tile_wet(tile) or growth_cycle_component.is_watered_today
+
+func _update_status_icons(burn_dps: float, total_stress_damage: float, total_growth_bonus: float) -> void:
+    if status_icons_container == null:
+        return
+
+    # Seuils (évite le clignotement)
+    const EPS := 0.01
+
+    if icon_burn:
+        icon_burn.visible = burn_dps > EPS and not is_dead
+
+    if icon_debuff:
+        icon_debuff.visible = total_stress_damage > EPS and not is_dead
+
+    if icon_buff:
+        icon_buff.visible = total_growth_bonus > EPS and not is_dead
+
+    if icon_wet:
+        icon_wet.visible = _is_tile_currently_wet() and not is_dead
+
+    # Le container est visible s'il y a au moins une icône visible
+    var any := false
+    for n in [icon_burn, icon_debuff, icon_buff, icon_wet]:
+        if n and n.visible:
+            any = true
+            break
+    status_icons_container.visible = any
+
+
 
 func update_ui() -> void:
     if not health_bar: return

@@ -105,8 +105,8 @@ script = ExtResource("5_bpp4m")
 emits_heat = true
 heat_power = 50.0
 heat_radius = 128.0
-burn_power = 0.0
-heat_sensitivity = 1.0
+burn_power = 0.5
+heat_sensitivity = 0.0
 metadata/_custom_type_script = "uid://bt6illphij7k6"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2lrcw"]
@@ -153,7 +153,7 @@ gravity_effect = SubResource("Resource_mksdd")
 heat_effect = SubResource("Resource_o8x6u")
 water_pulse_effect = SubResource("Resource_8bimb")
 oxygen_effect = SubResource("Resource_o68gv")
-min_heat = -50.0
+min_heat = 10.0
 min_oxygen = -50.0
 min_gravity = -50.0
 lore_data = ExtResource("9_mksdd")
