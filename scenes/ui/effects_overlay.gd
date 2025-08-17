@@ -2,6 +2,19 @@
 extends Node2D
 class_name EffectsOverlay
 
+# --- Limites de dessin de l'overlay ---
+enum BoundsMode { FROM_EFFECTMAPS, UNION_OF_LAYERS, CAMERA_VIEW }
+@export var bounds_mode: int = BoundsMode.UNION_OF_LAYERS
+
+# Si UNION_OF_LAYERS : liste des TileMapLayer à fusionner (mets GameTileMap/Water, /Grass, /TilledSoil)
+@export var bounds_layer_paths: Array[NodePath] = []
+
+# Si CAMERA_VIEW : caméra à utiliser + marge (en cellules)
+@export var camera2d_path: NodePath
+@export var view_margin_cells: int = 2
+
+
+
 @export var overlay_visible := false
 @export var start_in_all_mode := true        # Ouvre en mode "toutes les cartes"
 @export var alpha_max: float = 0.55
@@ -40,10 +53,11 @@ var current_effect: int = EffectMaps.EffectType.OXYGEN
 
 func _ready() -> void:
 	add_to_group("effects_overlay")
-	z_index = 10
+	z_index = z_index_overlay     # ← au lieu du 10 en dur
 	z_as_relative = true
 	visible = overlay_visible
 	EffectMaps.maps_rebuilt.connect(_on_maps_rebuilt)
+
 
 
 func _alpha_for(et: int, v: float) -> float:
@@ -106,11 +120,13 @@ func _cycle_effect(dir: int) -> void:
 	queue_redraw()
 
 func _get_map_rect_local() -> Rect2:
-	var used: Rect2i = EffectMaps.map_used_rect
+	var cells_rect: Rect2i = _bounds_rect_cells()
 	var ts: Vector2 = Vector2(EffectMaps.tile_size)
-	var top_left_layer: Vector2 = EffectMaps.terrain_layer.map_to_local(used.position)
+
+	var top_left_layer: Vector2 = EffectMaps.terrain_layer.map_to_local(cells_rect.position)
 	var top_left: Vector2 = to_local(EffectMaps.terrain_layer.to_global(top_left_layer)) - ts * 0.5
-	return Rect2(top_left, Vector2(used.size) * ts)
+	return Rect2(top_left, Vector2(cells_rect.size) * ts)
+
 
 func _rebuild_draw_cache() -> void:
 	_rects_by_effect.clear()
@@ -128,15 +144,14 @@ func _rebuild_draw_cache() -> void:
 		_colors_by_effect.append(cols)
 
 func _fill_cache_for_effect(et: int, out_rects: Array, out_cols: Array) -> void:
-	var used: Rect2i = EffectMaps.map_used_rect
+	var cells_rect: Rect2i = _bounds_rect_cells()
 	var ts: Vector2 = Vector2(EffectMaps.tile_size)
 
-	for y in range(used.position.y, used.end.y):
-		for x in range(used.position.x, used.end.x):
-			var cell: Vector2i = Vector2i(x, y)
-			var v: float = EffectMaps.get_value(et, cell)
-
-			var a_norm := _alpha_for(et, v)            # <-- normalisé 0..1
+	for y in range(cells_rect.position.y, cells_rect.end.y):
+		for x in range(cells_rect.position.x, cells_rect.end.x):
+			var cell := Vector2i(x, y)
+			var v: float = EffectMaps.get_value(et, cell)  # doit tolérer OOB → 0.0
+			var a_norm := _alpha_for(et, v)
 			if a_norm <= threshold:
 				continue
 
@@ -145,8 +160,9 @@ func _fill_cache_for_effect(et: int, out_rects: Array, out_cols: Array) -> void:
 			out_rects.append(Rect2(pos, ts))
 
 			var col: Color = COLORS[et]
-			col.a = a_norm * alpha_max                # <-- plus de saturation
+			col.a = a_norm * alpha_max
 			out_cols.append(col)
+
 
 func _draw() -> void:
 	if not overlay_visible:
@@ -160,3 +176,53 @@ func _draw() -> void:
 		var cols: Array = _colors_by_effect[i]
 		for j in rects.size():
 			draw_rect(rects[j], cols[j], true)
+
+func _bounds_rect_cells() -> Rect2i:
+	# 0) Sécurité : si pas de layer de référence, on tombe sur l'ancien comportement
+	if not EffectMaps.terrain_layer:
+		return EffectMaps.map_used_rect
+
+	match bounds_mode:
+		BoundsMode.FROM_EFFECTMAPS:
+			return EffectMaps.map_used_rect
+
+		BoundsMode.UNION_OF_LAYERS:
+			var have_any := false
+			var rect := Rect2i()
+			for p in bounds_layer_paths:
+				var l := get_node_or_null(p) as TileMapLayer
+				if l:
+					var r := l.get_used_rect()
+					if not have_any:
+						rect = r
+						have_any = true
+					else:
+						rect = rect.merge(r)
+			return rect if have_any else EffectMaps.map_used_rect
+
+
+		BoundsMode.CAMERA_VIEW:
+			var cam := get_node_or_null(camera2d_path) as Camera2D
+			if not cam:
+				return EffectMaps.map_used_rect
+
+			# coins du viewport (en global), avec zoom
+			var vp_size := get_viewport_rect().size
+			var half := (vp_size * cam.zoom) * 0.5
+			var tl := cam.global_position - half
+			var br := cam.global_position + half
+
+			# convertit en cellules via le layer de référence d’EffectMaps
+			var L := EffectMaps.terrain_layer
+			var tl_cell := L.local_to_map(L.to_local(tl))
+			var br_cell := L.local_to_map(L.to_local(br))
+
+			var min_x := mini(tl_cell.x, br_cell.x) - view_margin_cells
+			var min_y := mini(tl_cell.y, br_cell.y) - view_margin_cells
+			var max_x := maxi(tl_cell.x, br_cell.x) + view_margin_cells
+			var max_y := maxi(tl_cell.y, br_cell.y) + view_margin_cells
+
+			return Rect2i(Vector2i(min_x, min_y), Vector2i(max_x - min_x + 1, max_y - min_y + 1))
+
+		_:
+			return EffectMaps.map_used_rect

@@ -103,6 +103,8 @@ tile_set = ExtResource("6_lkheu")
 
 [node name="EffectsOverlay" type="Node2D" parent="GameTileMap"]
 script = ExtResource("14_nu6cv")
+bounds_layer_paths = Array[NodePath]([NodePath("../Water"), NodePath("../Grass"), NodePath("../TilledSoil")])
+camera2d_path = NodePath("../Player")
 
 [node name="PuzzleTriggerZone1_north_gravitron" parent="GameTileMap" node_paths=PackedStringArray("target_game_tilemap") instance=ExtResource("15_61fs4")]
 position = Vector2(65, -358)
