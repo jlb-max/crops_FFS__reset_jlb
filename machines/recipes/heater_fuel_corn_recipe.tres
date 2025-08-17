@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MachineRecipe" load_steps=5 format=3 uid="uid://cvlf38bj5e3at"]
+
+[ext_resource type="Script" uid="uid://d31hsogdinq" path="res://crafting/ingredient.gd" id="1_782c6"]
+[ext_resource type="Resource" uid="uid://dce87yl2m3jlr" path="res://scenes/objects/plants/corn_fruit.tres" id="2_782c6"]
+[ext_resource type="Script" uid="uid://d4l1k1io1a3n5" path="res://machines/logic/machine_recipe.gd" id="3_5lhkj"]
+
+[sub_resource type="Resource" id="Resource_j4vs3"]
+script = ExtResource("1_782c6")
+item = ExtResource("2_782c6")
+quantity = 1
+metadata/_custom_type_script = "uid://d31hsogdinq"
+
+[resource]
+script = ExtResource("3_5lhkj")
+unlock_condition = 0
+inputs = Array[ExtResource("1_782c6")]([SubResource("Resource_j4vs3")])
+outputs = Array[ExtResource("1_782c6")]([])
+processing_time_seconds = 60.0
+machine_type = &"HeaterMachine"
+metadata/_custom_type_script = "uid://d4l1k1io1a3n5"

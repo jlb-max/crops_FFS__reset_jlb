@@ -15,6 +15,7 @@ script = ExtResource("1_tue4p")
 scene_to_place = ExtResource("1_rf1h0")
 damage = 1
 action_type = 5
+source_plant_data_path = ""
 item_name = "Foyer"
 description = ""
 icon = SubResource("AtlasTexture_yno2e")

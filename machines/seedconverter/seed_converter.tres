@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://c4pkopxi7f343"]
+
+[ext_resource type="PackedScene" uid="uid://btppnf62c067e" path="res://machines/seedconverter/seed_converter.tscn" id="1_8vog4"]
+[ext_resource type="Script" uid="uid://bpxw848fbm6jv" path="res://scripts/globals/itemdata.gd" id="2_brjs6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0d0lx"]
+load_path = "res://.godot/imported/Basic Forge.png-771e0bee43ca44eaa11e076c3736cd65.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37nj5"]
+atlas = SubResource("CompressedTexture2D_0d0lx")
+region = Rect2(64, 0, 16, 32)
+
+[resource]
+script = ExtResource("2_brjs6")
+scene_to_place = ExtResource("1_8vog4")
+damage = 1
+action_type = 5
+source_plant_data_path = ""
+item_name = "SeedConverter"
+description = ""
+icon = SubResource("AtlasTexture_37nj5")
+stackable = true
+metadata/_custom_type_script = "uid://bpxw848fbm6jv"

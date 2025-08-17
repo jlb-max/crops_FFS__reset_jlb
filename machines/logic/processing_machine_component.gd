@@ -55,6 +55,8 @@ func start_processing(recipe_to_process: MachineRecipe) -> bool:
 	set_process(true)
 	return true
 
+
+
 # Quand le timer est fini
 func _on_processing_finished():
 	set_state(State.FINISHED)

@@ -1,0 +1,490 @@
+[gd_resource type="SpriteFrames" load_steps=121 format=3 uid="uid://bxykijldm8dpk"]
+
+[ext_resource type="Texture2D" uid="uid://brrgvqhvbnrhg" path="res://assets/game/objects/new planet/fire_2/1_0.png" id="1_v5d6t"]
+[ext_resource type="Texture2D" uid="uid://bcfohxpdbk5r4" path="res://assets/game/objects/new planet/fire_2/1_1.png" id="2_1is0s"]
+[ext_resource type="Texture2D" uid="uid://df7a3v62vf4da" path="res://assets/game/objects/new planet/fire_2/1_2.png" id="3_mtjjn"]
+[ext_resource type="Texture2D" uid="uid://uec5crl2gnq3" path="res://assets/game/objects/new planet/fire_2/1_3.png" id="4_xd8o5"]
+[ext_resource type="Texture2D" uid="uid://bnsutkkslnx5" path="res://assets/game/objects/new planet/fire_2/1_4.png" id="5_lfsar"]
+[ext_resource type="Texture2D" uid="uid://c8bi2crm7py" path="res://assets/game/objects/new planet/fire_2/1_5.png" id="6_j4kg8"]
+[ext_resource type="Texture2D" uid="uid://bqkam7jja05bv" path="res://assets/game/objects/new planet/fire_2/1_6.png" id="7_iq4ay"]
+[ext_resource type="Texture2D" uid="uid://f8wa41n7008e" path="res://assets/game/objects/new planet/fire_2/1_7.png" id="8_pesgl"]
+[ext_resource type="Texture2D" uid="uid://cg73w17l8kfpl" path="res://assets/game/objects/new planet/fire_2/1_8.png" id="9_mgk8e"]
+[ext_resource type="Texture2D" uid="uid://fvfck0a32f0m" path="res://assets/game/objects/new planet/fire_2/1_9.png" id="10_h61hr"]
+[ext_resource type="Texture2D" uid="uid://dq3oqacpm8sru" path="res://assets/game/objects/new planet/fire_2/1_10.png" id="11_5sgam"]
+[ext_resource type="Texture2D" uid="uid://dg3amc431m0gc" path="res://assets/game/objects/new planet/fire_2/1_11.png" id="12_fbpal"]
+[ext_resource type="Texture2D" uid="uid://co2v62srrfvo8" path="res://assets/game/objects/new planet/fire_2/1_12.png" id="13_tfvoq"]
+[ext_resource type="Texture2D" uid="uid://dy201576rku34" path="res://assets/game/objects/new planet/fire_2/1_13.png" id="14_bkyn8"]
+[ext_resource type="Texture2D" uid="uid://datx4giygmu2v" path="res://assets/game/objects/new planet/fire_2/1_14.png" id="15_rrlen"]
+[ext_resource type="Texture2D" uid="uid://cls1fpwv2x7mj" path="res://assets/game/objects/new planet/fire_2/1_15.png" id="16_38oag"]
+[ext_resource type="Texture2D" uid="uid://tgntqf6ouph" path="res://assets/game/objects/new planet/fire_2/1_16.png" id="17_ftbxb"]
+[ext_resource type="Texture2D" uid="uid://bkyqv5t3pvb81" path="res://assets/game/objects/new planet/fire_2/1_17.png" id="18_0tdx1"]
+[ext_resource type="Texture2D" uid="uid://c8mlhtxgmwevr" path="res://assets/game/objects/new planet/fire_2/1_18.png" id="19_rbip2"]
+[ext_resource type="Texture2D" uid="uid://dj5tipjrj6ffa" path="res://assets/game/objects/new planet/fire_2/1_19.png" id="20_anaw4"]
+[ext_resource type="Texture2D" uid="uid://chrsdkd6p3wrh" path="res://assets/game/objects/new planet/fire_2/1_20.png" id="21_sv6yd"]
+[ext_resource type="Texture2D" uid="uid://b0mamalu7dl1u" path="res://assets/game/objects/new planet/fire_2/1_21.png" id="22_fq26t"]
+[ext_resource type="Texture2D" uid="uid://b81r5ckreqym5" path="res://assets/game/objects/new planet/fire_2/1_22.png" id="23_dryct"]
+[ext_resource type="Texture2D" uid="uid://xx6sd65lvwpc" path="res://assets/game/objects/new planet/fire_2/1_23.png" id="24_dn4up"]
+[ext_resource type="Texture2D" uid="uid://3bu7h5mdeln3" path="res://assets/game/objects/new planet/fire_2/1_24.png" id="25_7e23p"]
+[ext_resource type="Texture2D" uid="uid://cbx2p33junfgc" path="res://assets/game/objects/new planet/fire_2/1_25.png" id="26_x7hk1"]
+[ext_resource type="Texture2D" uid="uid://bib58382ah2h5" path="res://assets/game/objects/new planet/fire_2/1_26.png" id="27_8sjdk"]
+[ext_resource type="Texture2D" uid="uid://q5skw3bmnu4l" path="res://assets/game/objects/new planet/fire_2/1_27.png" id="28_xyisa"]
+[ext_resource type="Texture2D" uid="uid://dn7ctv3k5a6p2" path="res://assets/game/objects/new planet/fire_2/1_28.png" id="29_bf4n4"]
+[ext_resource type="Texture2D" uid="uid://bcs1pr6qsleet" path="res://assets/game/objects/new planet/fire_2/1_29.png" id="30_doktk"]
+[ext_resource type="Texture2D" uid="uid://dbl1uouit1s8m" path="res://assets/game/objects/new planet/fire_2/1_30.png" id="31_meji8"]
+[ext_resource type="Texture2D" uid="uid://ccit27lxve86a" path="res://assets/game/objects/new planet/fire_2/1_31.png" id="32_jp0n7"]
+[ext_resource type="Texture2D" uid="uid://ctg1bbr4xnfum" path="res://assets/game/objects/new planet/fire_2/1_32.png" id="33_getna"]
+[ext_resource type="Texture2D" uid="uid://c70no5mgtidm3" path="res://assets/game/objects/new planet/fire_2/1_33.png" id="34_qeqxe"]
+[ext_resource type="Texture2D" uid="uid://b2ymiksthgga2" path="res://assets/game/objects/new planet/fire_2/1_34.png" id="35_4oftv"]
+[ext_resource type="Texture2D" uid="uid://dyjxl8wq7yd3t" path="res://assets/game/objects/new planet/fire_2/1_35.png" id="36_0ad2m"]
+[ext_resource type="Texture2D" uid="uid://cr2qkvgruhtrp" path="res://assets/game/objects/new planet/fire_2/1_36.png" id="37_75bdt"]
+[ext_resource type="Texture2D" uid="uid://d15083aw4pdr6" path="res://assets/game/objects/new planet/fire_2/1_37.png" id="38_lcp4s"]
+[ext_resource type="Texture2D" uid="uid://brgp13fs0d46l" path="res://assets/game/objects/new planet/fire_2/1_38.png" id="39_0utgx"]
+[ext_resource type="Texture2D" uid="uid://b7otr6vi4jvt0" path="res://assets/game/objects/new planet/fire_2/1_39.png" id="40_ver21"]
+[ext_resource type="Texture2D" uid="uid://b12hbwn5gnpmw" path="res://assets/game/objects/new planet/fire_2/1_40.png" id="41_kkldo"]
+[ext_resource type="Texture2D" uid="uid://cjntvlrnd1hnw" path="res://assets/game/objects/new planet/fire_2/1_41.png" id="42_l6kkk"]
+[ext_resource type="Texture2D" uid="uid://c3wknfv1drcab" path="res://assets/game/objects/new planet/fire_2/1_42.png" id="43_0jwug"]
+[ext_resource type="Texture2D" uid="uid://b42sevqh8nr5c" path="res://assets/game/objects/new planet/fire_2/1_43.png" id="44_aguhi"]
+[ext_resource type="Texture2D" uid="uid://dm400btivrhj2" path="res://assets/game/objects/new planet/fire_2/1_44.png" id="45_fdjo6"]
+[ext_resource type="Texture2D" uid="uid://bu8cc417q10ie" path="res://assets/game/objects/new planet/fire_2/1_45.png" id="46_nd654"]
+[ext_resource type="Texture2D" uid="uid://dgydp5brf4wyl" path="res://assets/game/objects/new planet/fire_2/1_46.png" id="47_7srcf"]
+[ext_resource type="Texture2D" uid="uid://clxv0maawsar0" path="res://assets/game/objects/new planet/fire_2/1_47.png" id="48_8ycci"]
+[ext_resource type="Texture2D" uid="uid://c2trk5lcsu72b" path="res://assets/game/objects/new planet/fire_2/1_48.png" id="49_ch1qr"]
+[ext_resource type="Texture2D" uid="uid://d2oi67herbmn8" path="res://assets/game/objects/new planet/fire_2/1_49.png" id="50_uwtq6"]
+[ext_resource type="Texture2D" uid="uid://jm6me8x4ysvi" path="res://assets/game/objects/new planet/fire_2/1_50.png" id="51_6pgn5"]
+[ext_resource type="Texture2D" uid="uid://c68agjibj1opj" path="res://assets/game/objects/new planet/fire_2/1_51.png" id="52_ffmnv"]
+[ext_resource type="Texture2D" uid="uid://cafqicbk2smc4" path="res://assets/game/objects/new planet/fire_2/1_52.png" id="53_k422j"]
+[ext_resource type="Texture2D" uid="uid://d1fg36j3us1ra" path="res://assets/game/objects/new planet/fire_2/1_53.png" id="54_u52la"]
+[ext_resource type="Texture2D" uid="uid://lw7mshsecalg" path="res://assets/game/objects/new planet/fire_2/1_54.png" id="55_11vvy"]
+[ext_resource type="Texture2D" uid="uid://31q15yvu5gcw" path="res://assets/game/objects/new planet/fire_2/1_55.png" id="56_h5cg8"]
+[ext_resource type="Texture2D" uid="uid://cark1vjvs7ohi" path="res://assets/game/objects/new planet/fire_2/1_56.png" id="57_d1ppp"]
+[ext_resource type="Texture2D" uid="uid://1nlc1ox4kx4d" path="res://assets/game/objects/new planet/fire_2/1_57.png" id="58_yuft2"]
+[ext_resource type="Texture2D" uid="uid://ss0heggk4i16" path="res://assets/game/objects/new planet/fire_2/1_58.png" id="59_eh6vb"]
+[ext_resource type="Texture2D" uid="uid://c8yngpre5aele" path="res://assets/game/objects/new planet/fire_2/1_59.png" id="60_fxhei"]
+[ext_resource type="Texture2D" uid="uid://bhkj8no1ml48o" path="res://assets/game/objects/new planet/fire_2/1_60.png" id="61_wfepa"]
+[ext_resource type="Texture2D" uid="uid://jhdxpi25ufhn" path="res://assets/game/objects/new planet/fire_2/1_61.png" id="62_s2hwy"]
+[ext_resource type="Texture2D" uid="uid://c4hdhmud0sdeb" path="res://assets/game/objects/new planet/fire_2/1_62.png" id="63_5hal2"]
+[ext_resource type="Texture2D" uid="uid://co65kk6a3mwm0" path="res://assets/game/objects/new planet/fire_2/1_63.png" id="64_beuvu"]
+[ext_resource type="Texture2D" uid="uid://c1og2gofsm22n" path="res://assets/game/objects/new planet/fire_2/1_64.png" id="65_6lk2l"]
+[ext_resource type="Texture2D" uid="uid://cwyjgnopbb8cp" path="res://assets/game/objects/new planet/fire_2/1_65.png" id="66_umidl"]
+[ext_resource type="Texture2D" uid="uid://bya5xibnvi401" path="res://assets/game/objects/new planet/fire_2/1_66.png" id="67_pqlaa"]
+[ext_resource type="Texture2D" uid="uid://b2jtm25utx7ee" path="res://assets/game/objects/new planet/fire_2/1_67.png" id="68_ne2kr"]
+[ext_resource type="Texture2D" uid="uid://dx7vfqoubvvgg" path="res://assets/game/objects/new planet/fire_2/1_68.png" id="69_n5x8i"]
+[ext_resource type="Texture2D" uid="uid://gk4bm18n7yph" path="res://assets/game/objects/new planet/fire_2/1_69.png" id="70_fluf5"]
+[ext_resource type="Texture2D" uid="uid://c2og05phpbd60" path="res://assets/game/objects/new planet/fire_2/1_70.png" id="71_20kj4"]
+[ext_resource type="Texture2D" uid="uid://bamhsaf3ldsrr" path="res://assets/game/objects/new planet/fire_2/1_71.png" id="72_miaxc"]
+[ext_resource type="Texture2D" uid="uid://cm7smdfov0nrl" path="res://assets/game/objects/new planet/fire_2/1_72.png" id="73_todva"]
+[ext_resource type="Texture2D" uid="uid://dxxfi8sue1g8g" path="res://assets/game/objects/new planet/fire_2/1_73.png" id="74_g2ko4"]
+[ext_resource type="Texture2D" uid="uid://cfa5xktph3uie" path="res://assets/game/objects/new planet/fire_2/1_74.png" id="75_r3g72"]
+[ext_resource type="Texture2D" uid="uid://btacg3jb85tsu" path="res://assets/game/objects/new planet/fire_2/1_75.png" id="76_7nu52"]
+[ext_resource type="Texture2D" uid="uid://b8uqlg6wxvyvq" path="res://assets/game/objects/new planet/fire_2/1_76.png" id="77_f330i"]
+[ext_resource type="Texture2D" uid="uid://dfnl8j1yg1y34" path="res://assets/game/objects/new planet/fire_2/1_77.png" id="78_aenhj"]
+[ext_resource type="Texture2D" uid="uid://b605qv4rrjfwo" path="res://assets/game/objects/new planet/fire_2/1_78.png" id="79_aecry"]
+[ext_resource type="Texture2D" uid="uid://pcus7l4a5ja7" path="res://assets/game/objects/new planet/fire_2/1_79.png" id="80_t6w8x"]
+[ext_resource type="Texture2D" uid="uid://3p66e8e40yl" path="res://assets/game/objects/new planet/fire_2/1_80.png" id="81_llyfj"]
+[ext_resource type="Texture2D" uid="uid://bciup5ks3h6n" path="res://assets/game/objects/new planet/fire_2/1_81.png" id="82_njcoi"]
+[ext_resource type="Texture2D" uid="uid://d0e227bi2jaj3" path="res://assets/game/objects/new planet/fire_2/1_82.png" id="83_7nsq3"]
+[ext_resource type="Texture2D" uid="uid://bihbni0ecj8mw" path="res://assets/game/objects/new planet/fire_2/1_83.png" id="84_bld3i"]
+[ext_resource type="Texture2D" uid="uid://c8eocde7lv4mi" path="res://assets/game/objects/new planet/fire_2/1_84.png" id="85_jmqvj"]
+[ext_resource type="Texture2D" uid="uid://ta47gnjut520" path="res://assets/game/objects/new planet/fire_2/1_85.png" id="86_o0jqn"]
+[ext_resource type="Texture2D" uid="uid://df6nytrscnbqa" path="res://assets/game/objects/new planet/fire_2/1_86.png" id="87_hkwqo"]
+[ext_resource type="Texture2D" uid="uid://deha4gbm1jml3" path="res://assets/game/objects/new planet/fire_2/1_87.png" id="88_d0r1w"]
+[ext_resource type="Texture2D" uid="uid://nhdkk0ftyvw8" path="res://assets/game/objects/new planet/fire_2/1_88.png" id="89_tilgj"]
+[ext_resource type="Texture2D" uid="uid://c1eo2vsrokstd" path="res://assets/game/objects/new planet/fire_2/1_89.png" id="90_8gi7t"]
+[ext_resource type="Texture2D" uid="uid://ngi7k3c3y113" path="res://assets/game/objects/new planet/fire_2/1_90.png" id="91_8u4sw"]
+[ext_resource type="Texture2D" uid="uid://ckqyt11qfke58" path="res://assets/game/objects/new planet/fire_2/1_91.png" id="92_5ldoj"]
+[ext_resource type="Texture2D" uid="uid://4sy67mi4846h" path="res://assets/game/objects/new planet/fire_2/1_92.png" id="93_7m56q"]
+[ext_resource type="Texture2D" uid="uid://cqnr3e3sc3f3k" path="res://assets/game/objects/new planet/fire_2/1_93.png" id="94_ms3lu"]
+[ext_resource type="Texture2D" uid="uid://dxxlwcqh53h58" path="res://assets/game/objects/new planet/fire_2/1_94.png" id="95_onawf"]
+[ext_resource type="Texture2D" uid="uid://xyh1g3f7rgij" path="res://assets/game/objects/new planet/fire_2/1_95.png" id="96_146oe"]
+[ext_resource type="Texture2D" uid="uid://cb3bs42drdm17" path="res://assets/game/objects/new planet/fire_2/1_96.png" id="97_qyyvd"]
+[ext_resource type="Texture2D" uid="uid://b1f6y8xwla3pf" path="res://assets/game/objects/new planet/fire_2/1_97.png" id="98_f0jm6"]
+[ext_resource type="Texture2D" uid="uid://fs5juu6f8ayn" path="res://assets/game/objects/new planet/fire_2/1_98.png" id="99_a6iqc"]
+[ext_resource type="Texture2D" uid="uid://bo0b5v5ee3vt4" path="res://assets/game/objects/new planet/fire_2/1_99.png" id="100_e2xal"]
+[ext_resource type="Texture2D" uid="uid://bqo3h7qukdvxy" path="res://assets/game/objects/new planet/fire_2/1_100.png" id="101_hmtus"]
+[ext_resource type="Texture2D" uid="uid://d08tmjc018tee" path="res://assets/game/objects/new planet/fire_2/1_101.png" id="102_3ojeu"]
+[ext_resource type="Texture2D" uid="uid://docvwsg8x2jk3" path="res://assets/game/objects/new planet/fire_2/1_102.png" id="103_71qeq"]
+[ext_resource type="Texture2D" uid="uid://y3nmsqm0irr3" path="res://assets/game/objects/new planet/fire_2/1_103.png" id="104_0ssav"]
+[ext_resource type="Texture2D" uid="uid://dfovwpffgyo4" path="res://assets/game/objects/new planet/fire_2/1_104.png" id="105_2os8w"]
+[ext_resource type="Texture2D" uid="uid://dw72q3cq80crm" path="res://assets/game/objects/new planet/fire_2/1_105.png" id="106_ffol2"]
+[ext_resource type="Texture2D" uid="uid://qauimyrdqolh" path="res://assets/game/objects/new planet/fire_2/1_106.png" id="107_v6qfn"]
+[ext_resource type="Texture2D" uid="uid://fjh50xspbwe5" path="res://assets/game/objects/new planet/fire_2/1_107.png" id="108_vsxgj"]
+[ext_resource type="Texture2D" uid="uid://bn3f1wao5633v" path="res://assets/game/objects/new planet/fire_2/1_108.png" id="109_as665"]
+[ext_resource type="Texture2D" uid="uid://demmysfblru4g" path="res://assets/game/objects/new planet/fire_2/1_109.png" id="110_r65mn"]
+[ext_resource type="Texture2D" uid="uid://4agpcjh8d63m" path="res://assets/game/objects/new planet/fire_2/1_110.png" id="111_7e6on"]
+[ext_resource type="Texture2D" uid="uid://byr7jl8jhgxvl" path="res://assets/game/objects/new planet/fire_2/1_111.png" id="112_jfbkn"]
+[ext_resource type="Texture2D" uid="uid://cjwio46uo6ir" path="res://assets/game/objects/new planet/fire_2/1_112.png" id="113_f0kba"]
+[ext_resource type="Texture2D" uid="uid://d1tn4yfxyj0t6" path="res://assets/game/objects/new planet/fire_2/1_113.png" id="114_lcmbk"]
+[ext_resource type="Texture2D" uid="uid://drfbv5dye8o1u" path="res://assets/game/objects/new planet/fire_2/1_114.png" id="115_wdsuw"]
+[ext_resource type="Texture2D" uid="uid://dneblvw2craah" path="res://assets/game/objects/new planet/fire_2/1_115.png" id="116_0flrq"]
+[ext_resource type="Texture2D" uid="uid://c8p75vppxcum1" path="res://assets/game/objects/new planet/fire_2/1_116.png" id="117_ei1yu"]
+[ext_resource type="Texture2D" uid="uid://cnhndfb2vskbo" path="res://assets/game/objects/new planet/fire_2/1_117.png" id="118_uwec7"]
+[ext_resource type="Texture2D" uid="uid://duvio3m0ewsst" path="res://assets/game/objects/new planet/fire_2/1_118.png" id="119_4lreh"]
+[ext_resource type="Texture2D" uid="uid://cvkghr2174epi" path="res://assets/game/objects/new planet/fire_2/1_119.png" id="120_7jxkl"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v5d6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1is0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mtjjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xd8o5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lfsar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j4kg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iq4ay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pesgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mgk8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_h61hr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5sgam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fbpal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tfvoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bkyn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rrlen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_38oag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ftbxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0tdx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rbip2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_anaw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_sv6yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_fq26t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_dryct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_dn4up")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_7e23p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_x7hk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_8sjdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_xyisa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_bf4n4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_doktk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_meji8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_jp0n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_getna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_qeqxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_4oftv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_0ad2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_75bdt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_lcp4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_0utgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ver21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_kkldo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_l6kkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_0jwug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_aguhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_fdjo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_nd654")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_7srcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_8ycci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ch1qr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_uwtq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_6pgn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_ffmnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_k422j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_u52la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_11vvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_h5cg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_d1ppp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_yuft2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_eh6vb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_fxhei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_wfepa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_s2hwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_5hal2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_beuvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_6lk2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_umidl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_pqlaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_ne2kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_n5x8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_fluf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_20kj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_miaxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_todva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_g2ko4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_r3g72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_7nu52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_f330i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_aenhj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_aecry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_t6w8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_llyfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_njcoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_7nsq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_bld3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_jmqvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_o0jqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_hkwqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_d0r1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_tilgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_8gi7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_8u4sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_5ldoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_7m56q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_ms3lu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_onawf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_146oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_qyyvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_f0jm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_a6iqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_e2xal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_hmtus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_3ojeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_71qeq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_0ssav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_2os8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_ffol2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_v6qfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_vsxgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_as665")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_r65mn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_7e6on")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_jfbkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_f0kba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_lcmbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_wdsuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_0flrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_ei1yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_uwec7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_4lreh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_7jxkl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

@@ -68,12 +68,31 @@ func on_interacted():
 		print("La machine est déjà en marche.")
 
 func start_burning_fuel() -> void:
-	# La logique de démarrage est déplacée ici
-	var success = processing_component.start_processing(fuel_recipe)
-	if success:
-		print("Heater alimenté.")
+	var success := false
+
+	# 1) Si une recette "par défaut" est définie ici → on l'utilise
+	if fuel_recipe:
+		success = processing_component.start_processing(fuel_recipe)
 	else:
-		print("Pas assez de biofuel !")
+		# 2) Sinon, on prend la première recette faisable parmi accepted_recipes
+		if processing_component:
+			for r in processing_component.accepted_recipes:
+				var ok := true
+				for ing in r.inputs:
+					if InventoryManager.get_item_count(ing.item) < ing.quantity:
+						ok = false
+						break
+				if ok:
+					success = processing_component.start_processing(r)
+					break
+
+	# Feedback propre sans ternaire
+	if success:
+		print("Machine lancée.")
+	else:
+		print("Pas assez d'ingrédients / aucune recette possible.")
+
+
 
 
 # --- LOGIQUE VISUELLE ET AURA ADAPTÉE ---

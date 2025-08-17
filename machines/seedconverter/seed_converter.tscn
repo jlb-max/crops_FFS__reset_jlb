@@ -1,0 +1,224 @@
+[gd_scene load_steps=31 format=3 uid="uid://btppnf62c067e"]
+
+[ext_resource type="Script" uid="uid://776c2axh50in" path="res://scenes/space/biofuelconverter.gd" id="1_8qie6"]
+[ext_resource type="Texture2D" uid="uid://b4xwosr7itod" path="res://assets/game/objects/new planet/Basic Forge.png" id="2_smtje"]
+[ext_resource type="PackedScene" uid="uid://beaog5n0dxa5y" path="res://scenes/components/interactable_component.tscn" id="3_apmql"]
+[ext_resource type="PackedScene" uid="uid://cd0n4jrm0co4x" path="res://scenes/components/interactable_label_component.tscn" id="4_s0krc"]
+[ext_resource type="PackedScene" uid="uid://dagnc3wfs7lsb" path="res://scenes/components/feed_component.tscn" id="5_wj2ce"]
+[ext_resource type="PackedScene" uid="uid://bf8wlp2uixhjh" path="res://machines/logic/ProcessingMachineComponent.tscn" id="6_3ceny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umtkn"]
+size = Vector2(30, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4orm"]
+atlas = ExtResource("2_smtje")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gsvd"]
+atlas = ExtResource("2_smtje")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lchco"]
+atlas = ExtResource("2_smtje")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxsqa"]
+atlas = ExtResource("2_smtje")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25dpp"]
+atlas = ExtResource("2_smtje")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1f5a"]
+atlas = ExtResource("2_smtje")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdh1x"]
+atlas = ExtResource("2_smtje")
+region = Rect2(0, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b51ck"]
+atlas = ExtResource("2_smtje")
+region = Rect2(16, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0upa"]
+atlas = ExtResource("2_smtje")
+region = Rect2(32, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj2c2"]
+atlas = ExtResource("2_smtje")
+region = Rect2(48, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aetdt"]
+atlas = ExtResource("2_smtje")
+region = Rect2(64, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nybi"]
+atlas = ExtResource("2_smtje")
+region = Rect2(80, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqwvb"]
+atlas = ExtResource("2_smtje")
+region = Rect2(96, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lips"]
+atlas = ExtResource("2_smtje")
+region = Rect2(112, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7bpl"]
+atlas = ExtResource("2_smtje")
+region = Rect2(128, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04qe8"]
+atlas = ExtResource("2_smtje")
+region = Rect2(144, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgto1"]
+atlas = ExtResource("2_smtje")
+region = Rect2(160, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_est44"]
+atlas = ExtResource("2_smtje")
+region = Rect2(176, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_guhsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4orm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gsvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lchco")
+}],
+"loop": false,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxsqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25dpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1f5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdh1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b51ck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0upa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj2c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aetdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nybi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqwvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lips")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7bpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04qe8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgto1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_est44")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cnxf"]
+size = Vector2(37, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44sq4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls05e"]
+bg_color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c25li"]
+bg_color = Color(0, 0.717647, 0.352941, 1)
+
+[node name="SeedConverter" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_8qie6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_umtkn")
+debug_color = Color(0, 0.196078, 0.713726, 0.419608)
+
+[node name="SpriteAnim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_guhsm")
+animation = &"on"
+autoplay = "off"
+frame_progress = 0.239991
+
+[node name="InteractableComponent" parent="." instance=ExtResource("3_apmql")]
+position = Vector2(3, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(-3.5, 11)
+shape = SubResource("RectangleShape2D_3cnxf")
+debug_color = Color(0.151871, 0.628777, 0.419654, 0.42)
+
+[node name="InteractableLabelComponent" parent="." instance=ExtResource("4_s0krc")]
+offset_left = -28.0
+offset_top = -42.0
+offset_right = -10.0
+offset_bottom = -24.0
+
+[node name="FeedComponent" parent="." instance=ExtResource("5_wj2ce")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FeedComponent"]
+shape = SubResource("CircleShape2D_44sq4")
+debug_color = Color(0.7416, 0.580644, 0.141262, 0.419608)
+
+[node name="OutputIndicator" type="Sprite2D" parent="."]
+position = Vector2(13, -23)
+scale = Vector2(0.5, 0.5)
+
+[node name="ProcessingMachineComponent" parent="." instance=ExtResource("6_3ceny")]
+machine_type = &"seedconverter"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -28.0
+offset_right = 39.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_ls05e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c25li")
+show_percentage = false
+
+[connection signal="interactable_activated" from="InteractableComponent" to="." method="_on_interactable_activated"]
+[connection signal="interactable_deactivated" from="InteractableComponent" to="." method="_on_interactable_deactivated"]

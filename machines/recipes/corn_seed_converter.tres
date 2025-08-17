@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MachineRecipe" load_steps=7 format=3 uid="uid://c4i5trb6dvfln"]
+
+[ext_resource type="Script" uid="uid://d31hsogdinq" path="res://crafting/ingredient.gd" id="1_ui2mh"]
+[ext_resource type="Resource" uid="uid://dce87yl2m3jlr" path="res://scenes/objects/plants/corn_fruit.tres" id="2_1fnrf"]
+[ext_resource type="Script" uid="uid://d4l1k1io1a3n5" path="res://machines/logic/machine_recipe.gd" id="2_rwt5m"]
+[ext_resource type="Resource" uid="uid://dlxrfh2t0atl7" path="res://scenes/objects/plants/corn_seed.tres" id="3_nudlm"]
+
+[sub_resource type="Resource" id="Resource_20nc8"]
+script = ExtResource("1_ui2mh")
+item = ExtResource("2_1fnrf")
+quantity = 1
+metadata/_custom_type_script = "uid://d31hsogdinq"
+
+[sub_resource type="Resource" id="Resource_3mnqn"]
+script = ExtResource("1_ui2mh")
+item = ExtResource("3_nudlm")
+quantity = 5
+metadata/_custom_type_script = "uid://d31hsogdinq"
+
+[resource]
+script = ExtResource("2_rwt5m")
+unlock_condition = 0
+inputs = Array[ExtResource("1_ui2mh")]([SubResource("Resource_20nc8")])
+outputs = Array[ExtResource("1_ui2mh")]([SubResource("Resource_3mnqn")])
+processing_time_seconds = 10.0
+machine_type = &"seedconverter"
+metadata/_custom_type_script = "uid://d4l1k1io1a3n5"

@@ -41,8 +41,8 @@ sprite_frames = SubResource("SpriteFrames_elu1k")
 offset = Vector2(0, -45)
 script = ExtResource("2_g5iuu")
 log_item_to_drop = ExtResource("4_skbjc")
-min_logs_to_drop = 1
-max_logs_to_drop = 3
+min_logs_to_drop = 10
+max_logs_to_drop = 30
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
