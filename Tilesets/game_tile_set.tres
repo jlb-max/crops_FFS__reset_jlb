@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=34 format=3 uid="uid://dm7aupe2py7xa"]
+[gd_resource type="TileSet" load_steps=35 format=3 uid="uid://dm7aupe2py7xa"]
 
 [ext_resource type="Texture2D" uid="uid://d4j613xqw08xf" path="res://assets/game/tilesets/ground tiles/water frames/water.png" id="1_m70i2"]
 [ext_resource type="Texture2D" uid="uid://c6iv1c48nvfsl" path="res://assets/game/tilesets/ground tiles/New tiles/tilled_dirt_wide.png" id="3_0b0mn"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://btppnf62c067e" path="res://machines/seedconverter/seed_converter.tscn" id="13_dekbp"]
 [ext_resource type="PackedScene" uid="uid://djnct3aboxv5o" path="res://scenes/space/biofuelconverter.tscn" id="13_qblla"]
 [ext_resource type="PackedScene" uid="uid://dyp00nuhmonwt" path="res://scenes/objects/craftables/atelier2.tscn" id="14_cv0k1"]
+[ext_resource type="PackedScene" uid="uid://dpnk7nactp8cf" path="res://scenes/objects/craftables/foyer_exterieur.tscn" id="14_ghad2"]
 [ext_resource type="PackedScene" uid="uid://ca7ilrmahamlq" path="res://machines/ordinateur/monolithe_ancien.tscn" id="15_jw5ls"]
 [ext_resource type="Texture2D" uid="uid://2m44cgxgncrh" path="res://assets/game/tilesets/tiles_v2/Tileset Grass Spring_v3.png" id="16_ej0tc"]
 [ext_resource type="PackedScene" uid="uid://7ly1c8exam8l" path="res://scenes/space/DNAAnalyzer.tscn" id="17_85lhn"]
@@ -805,6 +806,7 @@ scenes/11/scene = ExtResource("8_y4bu0")
 scenes/12/scene = ExtResource("10_85lhn")
 scenes/13/scene = ExtResource("13_qblla")
 scenes/14/scene = ExtResource("13_dekbp")
+scenes/15/scene = ExtResource("14_ghad2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y4bu0"]
 texture = ExtResource("16_ej0tc")
