@@ -106,7 +106,7 @@ emits_heat = true
 heat_power = 80.0
 heat_radius = 128.0
 burn_power = 0.0
-heat_sensitivity = 0.0
+heat_sensitivity = 0.1
 metadata/_custom_type_script = "uid://bt6illphij7k6"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2lrcw"]

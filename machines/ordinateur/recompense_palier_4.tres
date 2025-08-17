@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CumulativeReward" load_steps=8 format=3 uid="uid://b3dco370xgfg7"]
+
+[ext_resource type="Script" uid="uid://d31hsogdinq" path="res://crafting/ingredient.gd" id="1_xlv1b"]
+[ext_resource type="Resource" uid="uid://dbjvv5124nvmi" path="res://scenes/objects/plants/tomato_fruit.tres" id="2_xlv1b"]
+[ext_resource type="Script" uid="uid://c6md6w4rnuthp" path="res://crafting/crafting_recipe.gd" id="3_2m8ar"]
+[ext_resource type="Script" uid="uid://d4l1k1io1a3n5" path="res://machines/logic/machine_recipe.gd" id="4_qfuph"]
+[ext_resource type="Resource" uid="uid://b4auwhi3qvdrs" path="res://machines/recipes/tomato_seed_converter.tres" id="5_vcbvo"]
+[ext_resource type="Script" uid="uid://cl4puo50cqmuf" path="res://machines/ordinateur/cumulative_reward.gd" id="6_tgemw"]
+
+[sub_resource type="Resource" id="Resource_vrpjr"]
+script = ExtResource("1_xlv1b")
+item = ExtResource("2_xlv1b")
+quantity = 5
+metadata/_custom_type_script = "uid://d31hsogdinq"
+
+[resource]
+script = ExtResource("6_tgemw")
+fuel_required = Array[ExtResource("1_xlv1b")]([SubResource("Resource_vrpjr")])
+reward_items = Array[ExtResource("1_xlv1b")]([])
+reward_crafting_recipes = Array[ExtResource("3_2m8ar")]([])
+reward_machine_recipes = Array[ExtResource("4_qfuph")]([ExtResource("5_vcbvo")])
+metadata/_custom_type_script = "uid://cl4puo50cqmuf"

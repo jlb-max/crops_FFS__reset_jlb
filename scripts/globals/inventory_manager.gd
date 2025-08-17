@@ -7,7 +7,7 @@ var slots: Array = []
 var inventory_size: int = 20
 
 var hotbar_slots: Array = []
-var hotbar_size: int = 5
+var hotbar_size: int = 6
 
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=3 uid="uid://y3mgqptfb4bw"]
+[gd_scene load_steps=150 format=3 uid="uid://y3mgqptfb4bw"]
 
 [ext_resource type="Script" uid="uid://b0tvw1o2ysir0" path="res://scenes/characters/player/player.gd" id="1_qd3e3"]
 [ext_resource type="Script" uid="uid://bj8k1ugeneltl" path="res://scripts/state_machine/node_state_machine.gd" id="2_686vu"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://n8tm2m6k08d2" path="res://scenes/characters/player/raineffect.gd" id="9_djydg"]
 [ext_resource type="PackedScene" uid="uid://l03johye468p" path="res://scenes/test/test_scene_curseurdevisee.tscn" id="10_3xnwo"]
 [ext_resource type="PackedScene" uid="uid://boejlhiwl4577" path="res://scenes/components/StatusComponent.tscn" id="17_4kqyw"]
+[ext_resource type="Script" uid="uid://6sk13e33y633" path="res://scenes/characters/player/inventory_debug.gd" id="18_svuau"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tebod"]
 atlas = ExtResource("2_i1nod")
@@ -1099,3 +1100,10 @@ max_health = 100
 max_oxygen = 100
 max_heat = 100
 max_gravity = 100
+
+[node name="InventoryDebug" type="Node" parent="."]
+script = ExtResource("18_svuau")
+corn_seed_qty = 100
+tomato_seed_qty = 100
+stone_qty = 300
+small_log_qty = 300

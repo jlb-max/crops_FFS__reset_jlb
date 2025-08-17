@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MachineRecipe" load_steps=7 format=3 uid="uid://b4auwhi3qvdrs"]
+
+[ext_resource type="Script" uid="uid://d31hsogdinq" path="res://crafting/ingredient.gd" id="1_3km2o"]
+[ext_resource type="Resource" uid="uid://dbjvv5124nvmi" path="res://scenes/objects/plants/tomato_fruit.tres" id="2_3km2o"]
+[ext_resource type="Resource" uid="uid://bclleevjva4wm" path="res://scenes/objects/plants/tomato_seed.tres" id="3_itqnw"]
+[ext_resource type="Script" uid="uid://d4l1k1io1a3n5" path="res://machines/logic/machine_recipe.gd" id="4_g3ejg"]
+
+[sub_resource type="Resource" id="Resource_20nc8"]
+script = ExtResource("1_3km2o")
+item = ExtResource("2_3km2o")
+quantity = 1
+metadata/_custom_type_script = "uid://d31hsogdinq"
+
+[sub_resource type="Resource" id="Resource_3mnqn"]
+script = ExtResource("1_3km2o")
+item = ExtResource("3_itqnw")
+quantity = 5
+metadata/_custom_type_script = "uid://d31hsogdinq"
+
+[resource]
+script = ExtResource("4_g3ejg")
+unlock_condition = 1
+inputs = Array[ExtResource("1_3km2o")]([SubResource("Resource_20nc8")])
+outputs = Array[ExtResource("1_3km2o")]([SubResource("Resource_3mnqn")])
+processing_time_seconds = 10.0
+machine_type = &"seedconverter"
+metadata/_custom_type_script = "uid://d4l1k1io1a3n5"
