@@ -150,7 +150,7 @@ func _make_custom_tooltip(for_text: String) -> Control:
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(0, 0, 0, 0.9)
 	sb.border_color = Color(1, 1, 1, 0.08)
-	sb.border_width_all = 1
+	sb.set_border_width_all(1)
 	sb.corner_radius_top_left = 6
 	sb.corner_radius_top_right = 6
 	sb.corner_radius_bottom_left = 6

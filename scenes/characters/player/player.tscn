@@ -1017,8 +1017,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1crtg"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4kqyw"]
+radius = 4.0
+height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3xnwo"]
 radius = 8.0
@@ -1038,8 +1039,8 @@ offset = Vector2(0, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_1crtg")
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_4kqyw")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("2_686vu")
