@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://bpxw848fbm6jv" path="res://scripts/globals/itemdata.gd" id="1_li37i"]
 [ext_resource type="PackedScene" uid="uid://djnct3aboxv5o" path="res://scenes/space/biofuelconverter.tscn" id="1_svwaj"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m2eh4"]
-load_path = "res://.godot/imported/Basic Crafting Table.png-96219706d994af199f7cf169a61f23d9.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_svwaj"]
+load_path = "res://.godot/imported/FUle Refinery.png-6b9a590d8ba78b26b422fc9fa4540682.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_om8tv"]
-atlas = SubResource("CompressedTexture2D_m2eh4")
-region = Rect2(144, 8, 16, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2eh4"]
+atlas = SubResource("CompressedTexture2D_svwaj")
+region = Rect2(32, 0, 16, 32)
 
 [resource]
 script = ExtResource("1_li37i")
@@ -18,6 +18,6 @@ action_type = 5
 source_plant_data_path = ""
 item_name = "BioFuelConverter"
 description = ""
-icon = SubResource("AtlasTexture_om8tv")
+icon = SubResource("AtlasTexture_m2eh4")
 stackable = true
 metadata/_custom_type_script = "uid://bpxw848fbm6jv"

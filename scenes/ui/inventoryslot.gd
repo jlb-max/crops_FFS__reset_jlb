@@ -3,6 +3,8 @@ extends Panel
 
 enum SlotType { INVENTORY, MACHINE_INPUT }
 @export var slot_type: SlotType = SlotType.INVENTORY
+@export var slot_size: Vector2i = Vector2i(48, 48)  # overridable par l’éditeur
+
 
 # --- NŒUDS ---
 @onready var texture_rect: TextureRect = $TextureRect
@@ -16,6 +18,25 @@ var current_recipe: CraftingRecipe = null
 
 # --- SIGNAUX ---
 signal recipe_selected(recipe)
+
+func _ensure_refs() -> void:
+	if texture_rect == null:
+		texture_rect = get_node_or_null("TextureRect") as TextureRect
+	if label == null:
+		label = get_node_or_null("Label") as Label
+
+func _ready() -> void:
+	# Taille mini fixe du slot
+	custom_minimum_size = slot_size
+	size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	size_flags_vertical = Control.SIZE_SHRINK_CENTER
+
+	# Sécurise l’icône pour ne pas s’étirer
+	if texture_rect:
+		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		texture_rect.custom_minimum_size = slot_size
+		texture_rect.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		texture_rect.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 
 # =========================================================
 # Helpers tooltip (nouveau)
@@ -45,72 +66,79 @@ func _set_tooltip_from_item(it: ItemData, qty: int) -> void:
 # API d’affichage (existante + tooltips)
 # =========================================================
 func display_item(p_item_data: ItemData, p_quantity: int) -> void:
+	_ensure_refs()
 	current_recipe = null
 	item_data = p_item_data
 	quantity = p_quantity
 
-	texture_rect.texture = item_data.icon
-	texture_rect.visible = true
+	if texture_rect:
+		texture_rect.texture = item_data.icon
+		texture_rect.visible = true
 
-	label.text = str(quantity) if quantity > 1 else ""
-	label.visible = true
+	if label:
+		label.text = str(quantity) if quantity > 1 else ""
+		label.visible = true
 
-	texture_rect.modulate = Color.WHITE
+	if texture_rect:
+		texture_rect.modulate = Color.WHITE
 
-	# 👉 Tooltip
 	_set_tooltip_from_item(item_data, quantity)
 	_apply_tooltip(_item_display_name(item_data))
 
 func display_empty() -> void:
+	_ensure_refs()
 	item_data = null
 	current_recipe = null
 	quantity = 0
 
-	texture_rect.texture = null
-	texture_rect.visible = false
+	if texture_rect:
+		texture_rect.texture = null
+		texture_rect.visible = false
 
-	label.text = ""
-	label.visible = false
+	if label:
+		label.text = ""
+		label.visible = false
 
-	# 👉 Tooltip
 	_apply_tooltip("")
 
 func display_recipe(recipe: CraftingRecipe) -> void:
+	_ensure_refs()
 	display_empty()
 	current_recipe = recipe
 
 	if recipe and not recipe.outputs.is_empty():
-		_apply_tooltip(_item_display_name(recipe.outputs[0].item))
 		var display_item_data: ItemData = recipe.outputs[0].item
-		texture_rect.texture = display_item_data.icon
-		texture_rect.visible = true
-		# 👉 Tooltip = nom de l’item de sortie (ou mets le nom de recette si tu en as un)
 		_set_tooltip_from_item(display_item_data, 1)
+		_apply_tooltip(_item_display_name(display_item_data))
 
-	label.text = ""  # pas de quantité pour l’icône de recette
+		if texture_rect:
+			texture_rect.texture = display_item_data.icon
+			texture_rect.visible = true
 
-	if CraftingManager.can_craft(recipe):
-		texture_rect.modulate = Color.WHITE
-	else:
-		texture_rect.modulate = Color(0.7, 0.7, 0.7, 0.8)
+	if texture_rect:
+		if CraftingManager.can_craft(recipe):
+			texture_rect.modulate = Color.WHITE
+		else:
+			texture_rect.modulate = Color(0.7, 0.7, 0.7, 0.8)
 
 func display_ingredient_info(p_item_data: ItemData, p_quantity_required: int):
-	# On montre l’icône + un compteur possédé/requis
+	_ensure_refs()
 	item_data = p_item_data
 	quantity = p_quantity_required
 
-	texture_rect.texture = p_item_data.icon
-	texture_rect.visible = true
+	if texture_rect:
+		texture_rect.texture = p_item_data.icon
+		texture_rect.visible = true
 
 	var possessed_quantity = InventoryManager.get_item_count(p_item_data)
-	label.text = "%d/%d" % [possessed_quantity, p_quantity_required]
-	label.visible = true
-	label.add_theme_color_override(
-		"font_color",
-		Color.RED if possessed_quantity < p_quantity_required else Color.WHITE
-	)
+	if label:
+		label.text = "%d/%d" % [possessed_quantity, p_quantity_required]
+		label.visible = true
+		label.add_theme_color_override(
+			"font_color",
+			Color.RED if possessed_quantity < p_quantity_required else Color.WHITE
+		)
 
-	# 👉 Tooltip = nom de l’ingrédient (simple)
 	_set_tooltip_from_item(p_item_data, 0)
 	_apply_tooltip(_item_display_name(p_item_data))
 

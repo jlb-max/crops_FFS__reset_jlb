@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmwckryxuprqe"]
+[gd_scene load_steps=6 format=3 uid="uid://bmwckryxuprqe"]
 
 [ext_resource type="Script" uid="uid://orrj1x2v467n" path="res://machines/ordinateur/reward_machine_menu.gd" id="1_2q766"]
 [ext_resource type="Theme" uid="uid://b3n8unqbh0or1" path="res://scenes/ui/game_ui_theme.tres" id="1_jhjc5"]
@@ -8,6 +8,14 @@ bg_color = Color(0.180005, 0.180005, 0.180005, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhhe0"]
 bg_color = Color(0.118519, 0.296331, 0.709818, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhjc5"]
+bg_color = Color(0, 0.633972, 0.962888, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.943437, 0.643697, 1)
 
 [node name="RewardMachineMenu" type="PanelContainer"]
 custom_minimum_size = Vector2(400, 300)
@@ -19,7 +27,7 @@ anchor_bottom = 0.5
 offset_left = -200.0
 offset_top = -150.0
 offset_right = 200.0
-offset_bottom = 150.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jhjc5")
@@ -29,18 +37,10 @@ script = ExtResource("1_2q766")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "... besoin... aide....."
 horizontal_alignment = 1
-
-[node name="RequirementsContainer" type="VBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="CloseButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "fermer"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -48,3 +48,47 @@ layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_t5q5p")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fhhe0")
 show_percentage = false
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="RewardsTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 190)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/Content"]
+layout_mode = 2
+text = "besoin de:"
+
+[node name="RequirementsContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/Content"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/Content"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/separator = SubResource("StyleBoxFlat_jhjc5")
+
+[node name="RewardsContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/Content"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="CloseButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "fermer"
