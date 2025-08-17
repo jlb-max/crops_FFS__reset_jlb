@@ -70,11 +70,15 @@ func on_interacted():
 func start_burning_fuel() -> void:
 	var success := false
 
-	# 1) Si une recette "par défaut" est définie ici → on l'utilise
+	# Si la machine est "FINISHED", on récupère d'abord la sortie pour repasser à IDLE
+	if processing_component.current_state == ProcessingMachineComponent.State.FINISHED:
+		processing_component.collect_output()
+
+	# 1) Recette par défaut si définie
 	if fuel_recipe:
 		success = processing_component.start_processing(fuel_recipe)
 	else:
-		# 2) Sinon, on prend la première recette faisable parmi accepted_recipes
+		# 2) Sinon, première recette faisable parmi accepted_recipes
 		if processing_component:
 			for r in processing_component.accepted_recipes:
 				var ok := true
@@ -86,11 +90,11 @@ func start_burning_fuel() -> void:
 					success = processing_component.start_processing(r)
 					break
 
-	# Feedback propre sans ternaire
 	if success:
 		print("Machine lancée.")
 	else:
 		print("Pas assez d'ingrédients / aucune recette possible.")
+
 
 
 

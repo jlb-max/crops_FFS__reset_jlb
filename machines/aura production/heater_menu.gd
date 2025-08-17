@@ -83,12 +83,17 @@ func _add_recipe_row(recipe: MachineRecipe, pmc: ProcessingMachineComponent) -> 
 	# ✅ CORRECTION: fermer uniquement avec ')'
 	feed_btn.pressed.connect(func():
 		if heater_machine_ref and pmc:
+			# IMPORTANT : si une prod précédente est finie, on la ramasse
+			if pmc.current_state == ProcessingMachineComponent.State.FINISHED:
+				pmc.collect_output()
+
 			var ok := pmc.start_processing(recipe)
 			if ok:
 				close_menu()
 			else:
 				feed_btn.disabled = true
 	)
+
 
 
 # Renvoie le nombre de "crafts" possibles selon l'inventaire courant

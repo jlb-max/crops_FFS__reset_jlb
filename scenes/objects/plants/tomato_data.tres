@@ -103,10 +103,10 @@ metadata/_custom_type_script = "uid://uuuadwct7gp2"
 [sub_resource type="Resource" id="Resource_o8x6u"]
 script = ExtResource("5_bpp4m")
 emits_heat = true
-heat_power = 80.0
+heat_power = 50.0
 heat_radius = 128.0
 burn_power = 0.0
-heat_sensitivity = 0.1
+heat_sensitivity = 1.0
 metadata/_custom_type_script = "uid://bt6illphij7k6"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2lrcw"]
