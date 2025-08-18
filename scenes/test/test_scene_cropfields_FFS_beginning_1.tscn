@@ -32,13 +32,13 @@
 [ext_resource type="Resource" uid="uid://c8ph32wom3n6e" path="res://scenes/objects/plants/eggplant_seed.tres" id="24_ldc8s"]
 [ext_resource type="Resource" uid="uid://c7p3yk3760o3s" path="res://scenes/objects/plants/carot_seed.tres" id="25_1sjtb"]
 [ext_resource type="Resource" uid="uid://xrou4c8xrhkf" path="res://scenes/objects/plants/star_seed.tres" id="26_3cp64"]
-[ext_resource type="Resource" uid="uid://bclleevjva4wm" path="res://scenes/objects/plants/tomato_seed.tres" id="27_mss6c"]
 [ext_resource type="Resource" uid="uid://cs76q1aorqlpm" path="res://scenes/objects/plants/gravitron_seed.tres" id="28_hxpre"]
 [ext_resource type="Resource" uid="uid://d251lw71cjjxi" path="res://scenes/objects/plants/grape_seed.tres" id="29_7yb72"]
 [ext_resource type="Resource" uid="uid://1sb6bql4p1as" path="res://machines/biofuel/biofuel.tres" id="30_nn1og"]
 [ext_resource type="Resource" uid="uid://d1y4wuo6h4v7j" path="res://scenes/objects/trees/small_log.tres" id="31_axb4i"]
 [ext_resource type="Resource" uid="uid://dce87yl2m3jlr" path="res://scenes/objects/plants/corn_fruit.tres" id="31_riosk"]
 [ext_resource type="Resource" uid="uid://dbjvv5124nvmi" path="res://scenes/objects/plants/tomato_fruit.tres" id="32_2b7ie"]
+[ext_resource type="Resource" uid="uid://d3jkx8xlqitll" path="res://scenes/objects/plants/ice_plant_seed.tres" id="33_1x1qb"]
 [ext_resource type="Resource" uid="uid://cuufl813yry45" path="res://scenes/objects/plants/tournesol_seed.tres" id="33_to73r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iw503"]
@@ -110,19 +110,16 @@ camera2d_path = NodePath("../Player")
 position = Vector2(65, -358)
 required_plant = ExtResource("16_lkheu")
 template_scene_to_apply = ExtResource("17_6keyy")
-position_mode = null
-include_neighbors_for_connect = null
+target_game_tilemap = NodePath("..")
 erase_water_under_new_tiles = false
 fx_scene = ExtResource("18_1x1qb")
-fx_wave_delay = null
-fx_z_index = null
-target_game_tilemap = NodePath("..")
 
 [node name="CropFields" type="Node2D" parent="."]
 
 [node name="Plantedcrop" parent="CropFields" instance=ExtResource("18_6keyy")]
 position = Vector2(56, -825)
 plant_data = ExtResource("19_1x1qb")
+max_health = 100.0
 
 [node name="FieldCursorComponent" parent="." node_paths=PackedStringArray("grass_tilemap_layer", "tilled_soil_tilemap_layer") instance=ExtResource("15_je113")]
 script = ExtResource("16_hlryb")
@@ -162,7 +159,7 @@ item_data = ExtResource("26_3cp64")
 
 [node name="GroundLoot5" parent="." instance=ExtResource("22_xr3b1")]
 position = Vector2(130, 136)
-item_data = ExtResource("27_mss6c")
+item_data = ExtResource("33_1x1qb")
 
 [node name="GroundLoot6" parent="." instance=ExtResource("22_xr3b1")]
 position = Vector2(130, 158)
