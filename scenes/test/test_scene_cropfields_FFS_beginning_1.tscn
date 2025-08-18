@@ -110,9 +110,13 @@ camera2d_path = NodePath("../Player")
 position = Vector2(65, -358)
 required_plant = ExtResource("16_lkheu")
 template_scene_to_apply = ExtResource("17_6keyy")
-target_game_tilemap = NodePath("..")
+position_mode = null
+include_neighbors_for_connect = null
 erase_water_under_new_tiles = false
 fx_scene = ExtResource("18_1x1qb")
+fx_wave_delay = null
+fx_z_index = null
+target_game_tilemap = NodePath("..")
 
 [node name="CropFields" type="Node2D" parent="."]
 
