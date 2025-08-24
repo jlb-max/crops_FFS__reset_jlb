@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd3abxo115vmq"]
+
+[ext_resource type="PackedScene" uid="uid://c3myk53pl1vm" path="res://scenes/components/collectable_component.tscn" id="2_whbnx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t5g4b"]
+load_path = "res://.godot/imported/PC _ Computer - Stardew Valley - Environment - Mines.png-755395336585547a0dcdc4da4929e421.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgxlj"]
+atlas = SubResource("CompressedTexture2D_t5g4b")
+region = Rect2(32, 112, 16, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fip5g"]
+radius = 3.0
+
+[node name="Copper" type="Sprite2D"]
+position = Vector2(0, -4)
+texture = SubResource("AtlasTexture_dgxlj")
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_whbnx")]
+position = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_fip5g")
+debug_color = Color(0, 0.645882, 0.250145, 0.42)

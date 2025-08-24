@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cj3ek5hhr7kge"]
+
+[ext_resource type="Script" uid="uid://bpxw848fbm6jv" path="res://scripts/globals/itemdata.gd" id="1_p6cha"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p6cha"]
+load_path = "res://.godot/imported/PC _ Computer - Stardew Valley - Environment - Mines.png-755395336585547a0dcdc4da4929e421.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6yt"]
+atlas = SubResource("CompressedTexture2D_p6cha")
+region = Rect2(32, 112, 16, 8)
+
+[resource]
+script = ExtResource("1_p6cha")
+damage = 1
+action_type = 0
+source_plant_data_path = ""
+item_name = "Cuivre"
+description = ""
+icon = SubResource("AtlasTexture_hg6yt")
+stackable = true
+metadata/_custom_type_script = "uid://bpxw848fbm6jv"

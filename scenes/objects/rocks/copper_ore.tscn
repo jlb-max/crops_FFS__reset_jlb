@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://hok2w4kf8wid"]
+
+[ext_resource type="Shader" uid="uid://bx4d7ah5era7e" path="res://scenes/objects/shake.gdshader" id="1_84246"]
+[ext_resource type="Script" uid="uid://bjnluuj7m34vq" path="res://scenes/objects/rocks/rock.gd" id="2_qomgg"]
+[ext_resource type="Resource" uid="uid://cj3ek5hhr7kge" path="res://scenes/objects/rocks/copper.tres" id="3_84246"]
+[ext_resource type="PackedScene" uid="uid://1wyysx5dad3u" path="res://scenes/components/hurt_component.tscn" id="4_qpcpr"]
+[ext_resource type="PackedScene" uid="uid://vp158f76aul3" path="res://scenes/components/damage_component.tscn" id="5_blq2o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8i8v8"]
+resource_local_to_scene = true
+shader = ExtResource("1_84246")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1w5qv"]
+load_path = "res://.godot/imported/PC _ Computer - Stardew Valley - Environment - Mines.png-755395336585547a0dcdc4da4929e421.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms1l0"]
+atlas = SubResource("CompressedTexture2D_1w5qv")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ab37s"]
+radius = 6.08276
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5pald"]
+radius = 7.0
+
+[node name="CopperOre" type="Sprite2D"]
+material = SubResource("ShaderMaterial_8i8v8")
+position = Vector2(0, 5)
+texture = SubResource("AtlasTexture_ms1l0")
+offset = Vector2(0, -5)
+script = ExtResource("2_qomgg")
+copper_item_to_drop = ExtResource("3_84246")
+min_stones_to_drop = 10
+max_stones_to_drop = 30
+jet_gravity = 500.0
+jet_vy_range = Vector2(64, 64)
+jet_vh_range = Vector2(64, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, -2)
+shape = SubResource("CircleShape2D_ab37s")
+
+[node name="HurtComponent" parent="." instance=ExtResource("4_qpcpr")]
+position = Vector2(0, -5)
+required_action = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_5pald")
+debug_color = Color(0.875231, 0.248835, 0.603998, 0.42)
+
+[node name="DamageComponent" parent="." instance=ExtResource("5_blq2o")]
+max_damage = 5

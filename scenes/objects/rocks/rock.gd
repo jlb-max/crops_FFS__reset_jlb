@@ -4,10 +4,10 @@ extends Sprite2D
 @onready var damage_component: DamageComponent = $DamageComponent
 
 # Item ramassable laissé par chaque caillou
-@export var stone_item_to_drop: ItemData
+@export var copper_item_to_drop: ItemData
 
 # Scène de caillou (Sprite2D simple avec, si tu veux, un CollectableComponent)
-var stone_scene := preload("res://scenes/objects/rocks/stone.tscn")
+var copper_scene := preload("res://scenes/objects/rocks/copper.tscn")
 
 # ---- CONFIG DROP EXPLOSIF ----
 @export var min_stones_to_drop: int = 4
@@ -73,7 +73,7 @@ func spawn_explosive_drops() -> void:
 			target_pos = global_position + final_offset
 			tries += 1
 
-		var stone := stone_scene.instantiate()
+		var stone := copper_scene.instantiate()
 		if add_with_deferred:
 			parent.call_deferred("add_child", stone)
 			await get_tree().process_frame
@@ -88,8 +88,8 @@ func spawn_explosive_drops() -> void:
 
 		# Si Collectable présent, on assigne l'item
 		var collectable = stone.get_node_or_null("CollectableComponent")
-		if collectable and stone_item_to_drop:
-			collectable.item_data = stone_item_to_drop
+		if collectable and copper_item_to_drop:
+			collectable.item_data = copper_item_to_drop
 
 		# Mouvement balistique via tween_method
 		var rot_speed := randf_range(spin_speed_range.x, spin_speed_range.y)
