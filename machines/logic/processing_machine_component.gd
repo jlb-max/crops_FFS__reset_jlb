@@ -2,20 +2,22 @@
 class_name ProcessingMachineComponent
 extends Node
 
-# Signal émis quand l'état de la machine change
 signal state_changed(new_state)
 signal progress_updated(progress_percentage)
+signal queue_changed(length)
+
 enum State { IDLE, PROCESSING, FINISHED }
 
-# La liste des recettes que CETTE machine accepte
 @export var accepted_recipes: Array[MachineRecipe]
-
 @export var machine_type: StringName
-
+@export var max_queue_size := 10
 
 var current_state: State = State.IDLE
-var output_buffer = null # Contiendra { "item": ItemData, "quantity": int }
+
+# Chaque entrée du buffer est un "lot" = Array d'objets de sortie (recipe.outputs)
+var output_buffer: Array = []                # Array[Array[ItemStack]]
 var current_recipe_processing: MachineRecipe = null
+var job_queue: Array[MachineRecipe] = []     # file d’attente
 
 @onready var timer: Timer = Timer.new()
 
@@ -26,56 +28,100 @@ func _ready():
 	set_state(State.IDLE)
 	set_process(false)
 
-func _process(delta):
-	if current_state == State.PROCESSING and timer.wait_time > 0:
-		var time_left = timer.time_left
-		var total_time = timer.wait_time
-		var percentage = (1.0 - (time_left / total_time)) * 100.0
-		progress_updated.emit(percentage)
+func _process(_delta: float):
+	if current_state == State.PROCESSING and timer.wait_time > 0.0:
+		var p := (1.0 - (timer.time_left / timer.wait_time)) * 100.0
+		progress_updated.emit(p)
 
-# Fonction principale pour démarrer le processus
-func start_processing(recipe_to_process: MachineRecipe) -> bool:
-	if current_state != State.IDLE: return false
-	
-	# 1. On vérifie si on a tous les ingrédients
-	for ingredient in recipe_to_process.inputs:
-		if InventoryManager.get_item_count(ingredient.item) < ingredient.quantity:
-			return false # On s'arrête si un seul ingrédient manque
+# --- API publique ---
 
-	# 2. Si tout est bon, on consomme tous les ingrédients
-	for ingredient in recipe_to_process.inputs:
-		InventoryManager.remove_item(ingredient.item, ingredient.quantity)
-	
-	# Le reste de la fonction est presque identique...
-	output_buffer = recipe_to_process.outputs # Le buffer contient maintenant le tableau de sorties
-	current_recipe_processing = recipe_to_process
-	timer.start(recipe_to_process.processing_time_seconds)
-	
-	set_state(State.PROCESSING)
-	set_process(true)
+# Clique sur "Créer" -> on consomme + on démarre ou on met en file
+func queue_or_start(recipe: MachineRecipe) -> bool:
+	if not _has_ingredients_available(recipe):
+		return false
+
+	_consume_ingredients(recipe)
+
+	if current_state == State.IDLE and job_queue.is_empty():
+		_start_job(recipe)
+	else:
+		if job_queue.size() >= max_queue_size:
+			return false
+		job_queue.append(recipe)
+		queue_changed.emit(job_queue.size())
 	return true
 
+# Ramasse UN lot (le premier) ; renvoie true si quelque chose a été pris
+func collect_output() -> bool:
+	if output_buffer.is_empty():
+		return false
 
-
-# Quand le timer est fini
-func _on_processing_finished():
-	set_state(State.FINISHED)
-	set_process(false)
-
-# Quand le joueur récupère le produit
-func collect_output():
-	if current_state != State.FINISHED: return
-
-	# On ajoute chaque objet de la sortie à l'inventaire
-	for item_out in output_buffer:
+	var bundle: Array = output_buffer.pop_front()
+	for item_out in bundle:
 		InventoryManager.add_item(item_out.item, item_out.quantity)
 		print("Récupéré %d x %s" % [item_out.quantity, item_out.item.item_name])
-	
-	output_buffer = null
-	current_recipe_processing = null
-	set_state(State.IDLE)
-	set_process(false)
 
-func set_state(new_state: State):
+	# S'il ne reste rien à traiter et plus rien à récupérer -> IDLE
+	if job_queue.is_empty() and current_state != State.PROCESSING and output_buffer.is_empty():
+		set_state(State.IDLE)
+	else:
+		# S'il reste encore des bundles, on reste en FINISHED (indicateur actif)
+		if current_state != State.PROCESSING and not output_buffer.is_empty():
+			set_state(State.FINISHED)
+	return true
+
+func clear_queue():
+	job_queue.clear()
+	queue_changed.emit(0)
+
+func get_queue_length() -> int:
+	return job_queue.size()
+
+func set_state(new_state: State) -> void:
 	current_state = new_state
 	state_changed.emit(current_state)
+
+# --- Internes ---
+
+func _start_job(recipe: MachineRecipe) -> void:
+	current_recipe_processing = recipe
+	timer.start(recipe.processing_time_seconds)
+	set_state(State.PROCESSING)
+	set_process(true)
+
+func _on_processing_finished():
+	# Empile la sortie du job fini
+	if current_recipe_processing:
+		# On duplique pour éviter toute référence partagée
+		output_buffer.append(current_recipe_processing.outputs.duplicate(true))
+	current_recipe_processing = null
+
+	if job_queue.is_empty():
+		set_process(false)
+		set_state(State.FINISHED if not output_buffer.is_empty() else State.IDLE)
+	else:
+		var next_recipe: MachineRecipe = job_queue.pop_front()
+		queue_changed.emit(job_queue.size())
+		_start_job(next_recipe)
+
+func _has_ingredients_available(recipe: MachineRecipe) -> bool:
+	for ingredient in recipe.inputs:
+		if InventoryManager.get_item_count(ingredient.item) < ingredient.quantity:
+			return false
+	return true
+
+func _consume_ingredients(recipe: MachineRecipe) -> void:
+	for ingredient in recipe.inputs:
+		InventoryManager.remove_item(ingredient.item, ingredient.quantity)
+
+
+func get_queue_snapshot() -> Array:
+	# Copie défensive
+	return job_queue.duplicate(true)
+
+func get_queue_count_for(recipe: MachineRecipe) -> int:
+	var n := 0
+	for r in job_queue:
+		if r == recipe:
+			n += 1
+	return n
