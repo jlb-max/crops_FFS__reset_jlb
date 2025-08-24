@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dpnk7nactp8cf" path="res://scenes/objects/craftables/foyer_exterieur.tscn" id="14_ghad2"]
 [ext_resource type="PackedScene" uid="uid://ca7ilrmahamlq" path="res://machines/ordinateur/monolithe_ancien.tscn" id="15_jw5ls"]
 [ext_resource type="Texture2D" uid="uid://2m44cgxgncrh" path="res://assets/game/tilesets/tiles_v2/Tileset Grass Spring_v3.png" id="16_ej0tc"]
-[ext_resource type="PackedScene" uid="uid://7ly1c8exam8l" path="res://scenes/space/DNAAnalyzer.tscn" id="17_85lhn"]
+[ext_resource type="PackedScene" uid="uid://7ly1c8exam8l" path="res://machines/codex/DNAAnalyzer.tscn" id="17_85lhn"]
 [ext_resource type="Texture2D" uid="uid://cuaef6g8xpac1" path="res://assets/game/tilesets/tiles_v2/Tileset_Ground.png" id="22_aekik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbdxd"]

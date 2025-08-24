@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ca7ilrmahamlq"]
+[gd_scene load_steps=16 format=3 uid="uid://ca7ilrmahamlq"]
 
 [ext_resource type="PackedScene" uid="uid://beaog5n0dxa5y" path="res://scenes/components/interactable_component.tscn" id="1_cw1j0"]
 [ext_resource type="Script" uid="uid://c2ecl70hlcsv4" path="res://machines/ordinateur/monolithe_ancien.gd" id="1_uspbo"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://oy5lntvhcbn8" path="res://machines/ordinateur/recompense_palier_3.tres" id="10_68vuk"]
 [ext_resource type="PackedScene" uid="uid://swkq545lhdvv" path="res://scenes/space/aura.tscn" id="10_y6wup"]
 [ext_resource type="Resource" uid="uid://b3dco370xgfg7" path="res://machines/ordinateur/recompense_palier_4.tres" id="11_rbylr"]
+[ext_resource type="Resource" uid="uid://ccy2koievrh8v" path="res://machines/ordinateur/recompense_palier_5.tres" id="12_mre4r"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_y6wup"]
 points = PackedVector2Array(29, -56, 49, -16, -27, 37, -47, 26, -39, 3, -22, -18, 13, -46)
@@ -59,7 +60,7 @@ offset_right = -6.0
 offset_bottom = -38.0
 
 [node name="RewardMachineComponent" parent="." instance=ExtResource("3_xlq0o")]
-reward_tiers = Array[ExtResource("7_y6wup")]([ExtResource("8_68vuk"), ExtResource("9_bo022"), ExtResource("10_68vuk"), ExtResource("11_rbylr")])
+reward_tiers = Array[ExtResource("7_y6wup")]([ExtResource("8_68vuk"), ExtResource("9_bo022"), ExtResource("10_68vuk"), ExtResource("11_rbylr"), ExtResource("12_mre4r")])
 
 [node name="Aura" parent="." instance=ExtResource("10_y6wup")]
 effect_radius = 100.0

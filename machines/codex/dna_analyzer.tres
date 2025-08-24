@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://c6hk8vwb4v702"]
+
+[ext_resource type="Script" uid="uid://bpxw848fbm6jv" path="res://scripts/globals/itemdata.gd" id="1_2yr08"]
+[ext_resource type="PackedScene" uid="uid://7ly1c8exam8l" path="res://machines/codex/DNAAnalyzer.tscn" id="1_k0y3c"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k0y3c"]
+load_path = "res://.godot/imported/Basic Forge.png-771e0bee43ca44eaa11e076c3736cd65.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7xh7"]
+atlas = SubResource("CompressedTexture2D_k0y3c")
+region = Rect2(64, 8, 16, 24)
+
+[resource]
+script = ExtResource("1_2yr08")
+scene_to_place = ExtResource("1_k0y3c")
+damage = 1
+action_type = 5
+source_plant_data_path = ""
+item_name = "Séquenceur ADN"
+description = ""
+icon = SubResource("AtlasTexture_a7xh7")
+stackable = true
+metadata/_custom_type_script = "uid://bpxw848fbm6jv"

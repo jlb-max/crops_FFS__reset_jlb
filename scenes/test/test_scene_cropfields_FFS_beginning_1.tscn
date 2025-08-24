@@ -119,7 +119,6 @@ fx_scene = ExtResource("18_1x1qb")
 [node name="Plantedcrop" parent="CropFields" instance=ExtResource("18_6keyy")]
 position = Vector2(56, -825)
 plant_data = ExtResource("19_1x1qb")
-max_health = 100.0
 
 [node name="FieldCursorComponent" parent="." node_paths=PackedStringArray("grass_tilemap_layer", "tilled_soil_tilemap_layer") instance=ExtResource("15_je113")]
 script = ExtResource("16_hlryb")
@@ -211,6 +210,18 @@ item_data = ExtResource("32_2b7ie")
 
 [node name="GroundLoot17" parent="." instance=ExtResource("22_xr3b1")]
 position = Vector2(249, 279)
+item_data = ExtResource("32_2b7ie")
+
+[node name="GroundLoot24" parent="." instance=ExtResource("22_xr3b1")]
+position = Vector2(249, 257)
+item_data = ExtResource("32_2b7ie")
+
+[node name="GroundLoot25" parent="." instance=ExtResource("22_xr3b1")]
+position = Vector2(273, 257)
+item_data = ExtResource("32_2b7ie")
+
+[node name="GroundLoot26" parent="." instance=ExtResource("22_xr3b1")]
+position = Vector2(296, 257)
 item_data = ExtResource("32_2b7ie")
 
 [node name="GroundLoot12" parent="." instance=ExtResource("22_xr3b1")]

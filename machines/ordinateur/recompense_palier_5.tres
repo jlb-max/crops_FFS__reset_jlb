@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CumulativeReward" load_steps=8 format=3 uid="uid://ccy2koievrh8v"]
+
+[ext_resource type="Script" uid="uid://d31hsogdinq" path="res://crafting/ingredient.gd" id="1_hspaq"]
+[ext_resource type="Resource" uid="uid://caailwm8wyn7u" path="res://machines/biofuel/biofuel_red.tres" id="2_mrrip"]
+[ext_resource type="Script" uid="uid://c6md6w4rnuthp" path="res://crafting/crafting_recipe.gd" id="3_0ekuj"]
+[ext_resource type="Script" uid="uid://d4l1k1io1a3n5" path="res://machines/logic/machine_recipe.gd" id="4_2ly7r"]
+[ext_resource type="Resource" uid="uid://owds2d8j1plt" path="res://machines/recipes/DNA_analyzer_recipe.tres" id="5_mrrip"]
+[ext_resource type="Script" uid="uid://cl4puo50cqmuf" path="res://machines/ordinateur/cumulative_reward.gd" id="7_g1irg"]
+
+[sub_resource type="Resource" id="Resource_vrpjr"]
+script = ExtResource("1_hspaq")
+item = ExtResource("2_mrrip")
+quantity = 1
+metadata/_custom_type_script = "uid://d31hsogdinq"
+
+[resource]
+script = ExtResource("7_g1irg")
+fuel_required = Array[ExtResource("1_hspaq")]([SubResource("Resource_vrpjr")])
+reward_items = Array[ExtResource("1_hspaq")]([])
+reward_crafting_recipes = Array[ExtResource("3_0ekuj")]([])
+reward_machine_recipes = Array[ExtResource("4_2ly7r")]([ExtResource("5_mrrip")])
+metadata/_custom_type_script = "uid://cl4puo50cqmuf"

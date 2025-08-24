@@ -1,6 +1,6 @@
 [gd_scene load_steps=48 format=3 uid="uid://7ly1c8exam8l"]
 
-[ext_resource type="Script" uid="uid://eg6ibaijnltq" path="res://scenes/space/dna_analyzer.gd" id="1_ahaho"]
+[ext_resource type="Script" uid="uid://eg6ibaijnltq" path="res://machines/codex/dna_analyzer.gd" id="1_ahaho"]
 [ext_resource type="Texture2D" uid="uid://gvbndio4p5qj" path="res://assets/game/objects/new planet/Alchemy Crafting Table.png" id="1_y3lsn"]
 [ext_resource type="PackedScene" uid="uid://beaog5n0dxa5y" path="res://scenes/components/interactable_component.tscn" id="3_tterr"]
 [ext_resource type="PackedScene" uid="uid://cd0n4jrm0co4x" path="res://scenes/components/interactable_label_component.tscn" id="4_iu0jj"]
