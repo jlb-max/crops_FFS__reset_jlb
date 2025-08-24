@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CumulativeReward" load_steps=10 format=3 uid="uid://kdnwclrt1285"]
+[gd_resource type="Resource" script_class="CumulativeReward" load_steps=11 format=3 uid="uid://kdnwclrt1285"]
 
 [ext_resource type="Script" uid="uid://c6md6w4rnuthp" path="res://crafting/crafting_recipe.gd" id="1_tkh3e"]
 [ext_resource type="Script" uid="uid://d31hsogdinq" path="res://crafting/ingredient.gd" id="2_bo2oi"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d4l1k1io1a3n5" path="res://machines/logic/machine_recipe.gd" id="3_qb6w7"]
 [ext_resource type="Script" uid="uid://cl4puo50cqmuf" path="res://machines/ordinateur/cumulative_reward.gd" id="3_x404f"]
 [ext_resource type="Resource" uid="uid://c4uylvkp2bemm" path="res://machines/recipes/biofuelconverter_recipe.tres" id="6_lhthy"]
+[ext_resource type="Resource" uid="uid://dkejeoxcovx2s" path="res://machines/recipes/fourneau_recipe.tres" id="7_mrvsx"]
 
 [sub_resource type="Resource" id="Resource_t31vi"]
 script = ExtResource("2_bo2oi")
@@ -25,5 +26,5 @@ script = ExtResource("3_x404f")
 fuel_required = Array[ExtResource("2_bo2oi")]([SubResource("Resource_t31vi")])
 reward_items = Array[ExtResource("2_bo2oi")]([SubResource("Resource_mrvsx")])
 reward_crafting_recipes = Array[ExtResource("1_tkh3e")]([])
-reward_machine_recipes = Array[ExtResource("3_qb6w7")]([ExtResource("6_lhthy")])
+reward_machine_recipes = Array[ExtResource("3_qb6w7")]([ExtResource("6_lhthy"), ExtResource("7_mrvsx")])
 metadata/_custom_type_script = "uid://cl4puo50cqmuf"

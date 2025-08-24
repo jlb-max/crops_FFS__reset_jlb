@@ -1,0 +1,133 @@
+[gd_scene load_steps=18 format=3 uid="uid://ddeowbmhl13e3"]
+
+[ext_resource type="Script" uid="uid://776c2axh50in" path="res://scenes/space/biofuelconverter.gd" id="1_p0mq4"]
+[ext_resource type="Texture2D" uid="uid://clgxtr6cle8rn" path="res://assets/game/objects/new planet/Furnace.png" id="2_f6tgd"]
+[ext_resource type="PackedScene" uid="uid://beaog5n0dxa5y" path="res://scenes/components/interactable_component.tscn" id="3_ievx8"]
+[ext_resource type="PackedScene" uid="uid://cd0n4jrm0co4x" path="res://scenes/components/interactable_label_component.tscn" id="4_0asl7"]
+[ext_resource type="PackedScene" uid="uid://dagnc3wfs7lsb" path="res://scenes/components/feed_component.tscn" id="5_i1wm6"]
+[ext_resource type="PackedScene" uid="uid://bf8wlp2uixhjh" path="res://machines/logic/ProcessingMachineComponent.tscn" id="6_q1wuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umtkn"]
+size = Vector2(30, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0w8i"]
+atlas = ExtResource("2_f6tgd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52wpd"]
+atlas = ExtResource("2_f6tgd")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agq1r"]
+atlas = ExtResource("2_f6tgd")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecivm"]
+atlas = ExtResource("2_f6tgd")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv75o"]
+atlas = ExtResource("2_f6tgd")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_guhsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0w8i")
+}],
+"loop": false,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52wpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agq1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecivm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv75o")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cnxf"]
+size = Vector2(37, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44sq4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls05e"]
+bg_color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c25li"]
+bg_color = Color(0, 0.717647, 0.352941, 1)
+
+[node name="Fourneau" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_p0mq4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_umtkn")
+debug_color = Color(0, 0.196078, 0.713726, 0.419608)
+
+[node name="SpriteAnim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_guhsm")
+animation = &"off"
+autoplay = "off"
+frame_progress = 1.0
+
+[node name="InteractableComponent" parent="." instance=ExtResource("3_ievx8")]
+position = Vector2(3, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(-3.5, 11)
+shape = SubResource("RectangleShape2D_3cnxf")
+debug_color = Color(0.151871, 0.628777, 0.419654, 0.42)
+
+[node name="InteractableLabelComponent" parent="." instance=ExtResource("4_0asl7")]
+offset_left = -35.0
+offset_top = -39.0
+offset_right = -17.0
+offset_bottom = -21.0
+
+[node name="FeedComponent" parent="." instance=ExtResource("5_i1wm6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FeedComponent"]
+shape = SubResource("CircleShape2D_44sq4")
+debug_color = Color(0.7416, 0.580644, 0.141262, 0.419608)
+
+[node name="OutputIndicator" type="Sprite2D" parent="."]
+position = Vector2(13, -23)
+scale = Vector2(0.5, 0.5)
+
+[node name="ProcessingMachineComponent" parent="." instance=ExtResource("6_q1wuw")]
+machine_type = &"Fourneau"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -33.0
+offset_right = 38.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_ls05e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c25li")
+show_percentage = false
+
+[connection signal="interactable_activated" from="InteractableComponent" to="." method="_on_interactable_activated"]
+[connection signal="interactable_deactivated" from="InteractableComponent" to="." method="_on_interactable_deactivated"]

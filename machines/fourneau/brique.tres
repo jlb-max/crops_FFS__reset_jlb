@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://c1v2400k6mqpy"]
+
+[ext_resource type="Script" uid="uid://bpxw848fbm6jv" path="res://scripts/globals/itemdata.gd" id="1_1u7y5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1u7y5"]
+load_path = "res://.godot/imported/PC _ Computer - Stardew Valley - Miscellaneous - Harvested Crops, Seed Packets, Minerals, Food, Equipment, & Miscellaneous Objects.png-959a84672a7210d8fb4e586b6ba2afa9.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8aj6"]
+atlas = SubResource("CompressedTexture2D_1u7y5")
+region = Rect2(272, 288, 16, 16)
+
+[resource]
+script = ExtResource("1_1u7y5")
+damage = 1
+action_type = 0
+source_plant_data_path = ""
+item_name = "Brique"
+description = ""
+icon = SubResource("AtlasTexture_t8aj6")
+stackable = true
+metadata/_custom_type_script = "uid://bpxw848fbm6jv"

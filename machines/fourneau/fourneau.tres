@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://ctku0ejfi6rds"]
+
+[ext_resource type="PackedScene" uid="uid://ddeowbmhl13e3" path="res://machines/fourneau/fourneau.tscn" id="1_7ujro"]
+[ext_resource type="Script" uid="uid://bpxw848fbm6jv" path="res://scripts/globals/itemdata.gd" id="2_hnhkr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_twebn"]
+load_path = "res://.godot/imported/Furnace.png-af6c6dda3e36c45f91a06e1bd3090c58.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37nj5"]
+atlas = SubResource("CompressedTexture2D_twebn")
+region = Rect2(0, 32, 32, 32)
+
+[resource]
+script = ExtResource("2_hnhkr")
+scene_to_place = ExtResource("1_7ujro")
+damage = 1
+action_type = 5
+source_plant_data_path = ""
+item_name = "Fourneau"
+description = ""
+icon = SubResource("AtlasTexture_37nj5")
+stackable = true
+metadata/_custom_type_script = "uid://bpxw848fbm6jv"
