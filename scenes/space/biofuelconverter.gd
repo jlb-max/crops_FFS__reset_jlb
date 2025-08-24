@@ -66,16 +66,18 @@ func _input(event: InputEvent):
 
 # C'est ici que se trouve la logique de la machine
 func on_interacted():
-	print("Interaction ! État actuel de la machine : ", ProcessingMachineComponent.State.keys()[processing_component.current_state])
-	# Si la machine est inactive, on demande au GameManager d'ouvrir le menu
-	if processing_component.current_state == ProcessingMachineComponent.State.IDLE:
-		GameManager.open_biofuel_menu(processing_component)
+	var st := processing_component.current_state
 
-	# La logique pour récupérer un objet terminé ne change pas
-	elif processing_component.current_state == ProcessingMachineComponent.State.FINISHED:
-		var collected_item = processing_component.collect_output()
-		if collected_item:
-			print("Récupéré %d x %s" % [collected_item.quantity, collected_item.item.item_name])
+	# Si quelque chose est terminé, on le ramasse d'abord (un bundle),
+	# puis on ouvre quand même le menu.
+	if st == ProcessingMachineComponent.State.FINISHED:
+		if not processing_component.output_buffer.is_empty():
+			if processing_component.collect_output():
+				on_state_changed(processing_component.current_state)
+
+	# IMPORTANT : on ouvre le menu **dans tous les états** (IDLE / PROCESSING / FINISHED)
+	GameManager.open_biofuel_menu(processing_component)
+
 
 # Cette fonction gère le visuel de la machine et ne change pas
 func on_state_changed(new_state):
@@ -98,16 +100,18 @@ func on_state_changed(new_state):
 			
 		ProcessingMachineComponent.State.FINISHED:
 			sprite_anim.modulate = Color.WHITE
-			progress_bar.visible = false # Cacher la barre
-			
-			# MODIFICATION 4 : Lancer l'animation "off"
+			progress_bar.visible = false
 			sprite_anim.play("off")
-			
-			# Le reste de la logique pour l'indicateur de sortie ne change pas
+
 			if not processing_component.output_buffer.is_empty():
 				output_indicator.visible = true
-				var first_output_item = processing_component.output_buffer[0].item
-				output_indicator.texture = first_output_item.icon
+				var first_bundle: Array = processing_component.output_buffer[0]
+				if not first_bundle.is_empty():
+					var first_item = first_bundle[0].item
+					output_indicator.texture = first_item.icon
+			else:
+				output_indicator.visible = false
+
 
 
 func _process(delta: float):
