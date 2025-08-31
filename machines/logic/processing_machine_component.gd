@@ -5,6 +5,8 @@ extends Node
 signal state_changed(new_state)
 signal progress_updated(progress_percentage)
 signal queue_changed(length)
+signal outputs_changed
+
 
 enum State { IDLE, PROCESSING, FINISHED }
 
@@ -59,6 +61,7 @@ func collect_output() -> bool:
 	var bundle: Array = output_buffer.pop_front()
 	for item_out in bundle:
 		InventoryManager.add_item(item_out.item, item_out.quantity)
+		outputs_changed.emit()
 		print("Récupéré %d x %s" % [item_out.quantity, item_out.item.item_name])
 
 	# S'il ne reste rien à traiter et plus rien à récupérer -> IDLE
@@ -94,6 +97,8 @@ func _on_processing_finished():
 	if current_recipe_processing:
 		# On duplique pour éviter toute référence partagée
 		output_buffer.append(current_recipe_processing.outputs.duplicate(true))
+		outputs_changed.emit()
+
 	current_recipe_processing = null
 
 	if job_queue.is_empty():
@@ -125,3 +130,20 @@ func get_queue_count_for(recipe: MachineRecipe) -> int:
 		if r == recipe:
 			n += 1
 	return n
+
+func get_ready_item_totals() -> Dictionary:
+	# { ItemData : total_quantity } cumulé sur tous les bundles prêts
+	var totals := {}
+	for bundle in output_buffer:
+		for item_out in bundle:
+			var it = item_out.item
+			var q  = int(item_out.quantity)
+			totals[it] = (totals.get(it, 0) + q)
+	return totals
+	
+	
+func collect_all_outputs() -> int:
+	var taken := 0
+	while collect_output():
+		taken += 1
+	return taken   # nombre de bundles pris
