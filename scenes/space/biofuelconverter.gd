@@ -9,6 +9,8 @@ extends StaticBody2D
 @onready var processing_component: ProcessingMachineComponent = $ProcessingMachineComponent
 @onready var output_indicator: Sprite2D = $OutputIndicator
 @onready var progress_bar: ProgressBar = $ProgressBar
+@onready var output_count_label: Label = $OutputIndicator/OutputCountLabel
+
 
 @export var swing_speed: float = 3.0
 @export var swing_angle: float = 15.0 # Angle maximum en degrés
@@ -31,6 +33,7 @@ func _ready():
 	interactable_component.interactable_activated.connect(_on_interactable_activated)
 	interactable_component.interactable_deactivated.connect(_on_interactable_deactivated)
 	processing_component.state_changed.connect(on_state_changed)
+	processing_component.outputs_changed.connect(_update_output_indicator)
 	
 	# On met à jour l'état initial
 	on_state_changed(processing_component.current_state)
@@ -66,16 +69,17 @@ func _input(event: InputEvent):
 
 # C'est ici que se trouve la logique de la machine
 func on_interacted():
-	print("Interaction ! État actuel de la machine : ", ProcessingMachineComponent.State.keys()[processing_component.current_state])
-	# Si la machine est inactive, on demande au GameManager d'ouvrir le menu
-	if processing_component.current_state == ProcessingMachineComponent.State.IDLE:
-		GameManager.open_biofuel_menu(processing_component)
+	# 1) Ramasse TOUT ce qui est prêt (quel que soit l'état)
+	if not processing_component.output_buffer.is_empty():
+		var bundles = processing_component.collect_all_outputs()
+		if bundles > 0:
+			print("Récupéré tous les bundles prêts: ", bundles)
+			_update_output_indicator()  # refresh visuel
 
-	# La logique pour récupérer un objet terminé ne change pas
-	elif processing_component.current_state == ProcessingMachineComponent.State.FINISHED:
-		var collected_item = processing_component.collect_output()
-		if collected_item:
-			print("Récupéré %d x %s" % [collected_item.quantity, collected_item.item.item_name])
+	# 2) Ouvre toujours le menu (IDLE / PROCESSING / FINISHED)
+	GameManager.open_biofuel_menu(processing_component)
+
+
 
 # Cette fonction gère le visuel de la machine et ne change pas
 func on_state_changed(new_state):
@@ -98,16 +102,18 @@ func on_state_changed(new_state):
 			
 		ProcessingMachineComponent.State.FINISHED:
 			sprite_anim.modulate = Color.WHITE
-			progress_bar.visible = false # Cacher la barre
-			
-			# MODIFICATION 4 : Lancer l'animation "off"
+			progress_bar.visible = false
 			sprite_anim.play("off")
-			
-			# Le reste de la logique pour l'indicateur de sortie ne change pas
+
 			if not processing_component.output_buffer.is_empty():
 				output_indicator.visible = true
-				var first_output_item = processing_component.output_buffer[0].item
-				output_indicator.texture = first_output_item.icon
+				var first_bundle: Array = processing_component.output_buffer[0]
+				if not first_bundle.is_empty():
+					var first_item = first_bundle[0].item
+					output_indicator.texture = first_item.icon
+			else:
+				output_indicator.visible = false
+
 
 
 func _process(delta: float):
@@ -138,3 +144,30 @@ func _on_interactable_deactivated():
 	_player_is_nearby = false
 	if interactable_label_component:
 		interactable_label_component.hide()
+
+
+func _update_output_indicator() -> void:
+	var has_any := not processing_component.output_buffer.is_empty()
+	output_indicator.visible = has_any
+	if output_count_label:
+		output_count_label.visible = has_any
+
+	if not has_any:
+		return
+
+	# Résumé cumulé par item (ex: { ItemA: 5, ItemB: 2 })
+	var totals = processing_component.get_ready_item_totals()
+
+	# Choix d'une icône "représentative" (1er item cumulé)
+	var keys = totals.keys()
+	if keys.size() > 0:
+		var first_item = keys[0]
+		if first_item and first_item.icon:
+			output_indicator.texture = first_item.icon
+
+	# Compteur total cumulé (tous items confondus)
+	var total_units := 0
+	for v in totals.values():
+		total_units += int(v)
+	if output_count_label:
+		output_count_label.text = "x%d" % total_units

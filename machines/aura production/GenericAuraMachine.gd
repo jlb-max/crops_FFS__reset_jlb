@@ -68,32 +68,32 @@ func on_interacted():
 		print("La machine est déjà en marche.")
 
 func start_burning_fuel() -> void:
-	var success := false
-
-	# Si la machine est "FINISHED", on récupère d'abord la sortie pour repasser à IDLE
 	if processing_component.current_state == ProcessingMachineComponent.State.FINISHED:
-		processing_component.collect_output()
+		# récupère ce qui traîne pour repasser à IDLE (si jamais il y a des outputs)
+		while processing_component.collect_output():
+			pass
 
-	# 1) Recette par défaut si définie
+	var success := false
+	# 1) Recette par défaut
 	if fuel_recipe:
-		success = processing_component.start_processing(fuel_recipe)
+		success = processing_component.queue_or_start(fuel_recipe)
 	else:
-		# 2) Sinon, première recette faisable parmi accepted_recipes
-		if processing_component:
-			for r in processing_component.accepted_recipes:
-				var ok := true
-				for ing in r.inputs:
-					if InventoryManager.get_item_count(ing.item) < ing.quantity:
-						ok = false
-						break
-				if ok:
-					success = processing_component.start_processing(r)
+		# 2) 1ère recette faisable parmi accepted_recipes
+		for r in processing_component.accepted_recipes:
+			var ok := true
+			for ing in r.inputs:
+				if InventoryManager.get_item_count(ing.item) < ing.quantity:
+					ok = false
 					break
+			if ok:
+				success = processing_component.queue_or_start(r)
+				break
 
 	if success:
-		print("Machine lancée.")
+		print("Combustible ajouté à la file / démarré.")
 	else:
-		print("Pas assez d'ingrédients / aucune recette possible.")
+		print("Pas assez d'ingrédients / file pleine / aucune recette possible.")
+
 
 
 
@@ -129,10 +129,10 @@ func on_state_changed(new_state):
 
 # --- PROCESS SIMPLIFIÉ ---
 func _process(delta: float):
-	# On met à jour la barre de progression uniquement si la machine travaille
 	if processing_component.current_state == ProcessingMachineComponent.State.PROCESSING:
 		var time_left = processing_component.timer.time_left
 		var total_time = processing_component.timer.wait_time
-		progress_bar.value = (time_left / total_time) * 100.0
+		progress_bar.visible = true
+		progress_bar.value = (1.0 - (time_left / total_time)) * 100.0
 	else:
 		progress_bar.visible = false

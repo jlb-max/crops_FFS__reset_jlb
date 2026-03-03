@@ -177,6 +177,12 @@ offset_bottom = -53.0
 [node name="OutputIndicator" type="Sprite2D" parent="."]
 position = Vector2(10, -32)
 
+[node name="OutputCountLabel" type="Label" parent="."]
+offset_left = 15.0
+offset_top = -78.0
+offset_right = 55.0
+offset_bottom = -55.0
+
 [node name="ProcessingMachineComponent" parent="." instance=ExtResource("6_0gofn")]
 accepted_recipes = Array[ExtResource("7_ksbad")]([ExtResource("8_ls05e"), ExtResource("9_ls05e")])
 machine_type = &"BioFuelConverter"

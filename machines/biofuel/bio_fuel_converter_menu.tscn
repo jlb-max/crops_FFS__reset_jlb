@@ -28,6 +28,19 @@ layout_mode = 2
 text = "fabrications"
 horizontal_alignment = 1
 
+[node name="QueueBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="QueueText" type="Label" parent="VBoxContainer/QueueBar"]
+layout_mode = 2
+text = "file:"
+
+[node name="QueueIcons" type="HBoxContainer" parent="VBoxContainer/QueueBar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3

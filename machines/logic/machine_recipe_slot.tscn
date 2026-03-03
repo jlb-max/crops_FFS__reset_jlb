@@ -28,6 +28,7 @@ layout_mode = 2
 
 [node name="ConvertButton" type="Button" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "créer"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
